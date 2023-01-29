@@ -192,4 +192,8 @@ class AuthController extends ChangeNotifier {
       onSuccess();
     });
   }
+  deleteImage() {
+    imagePath = '';
+    notifyListeners();
+  }
 }

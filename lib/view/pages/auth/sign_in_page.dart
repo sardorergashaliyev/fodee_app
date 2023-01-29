@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/auth_controller.dart';
-import 'package:foode/view/pages/auth/sign_ip_page.dart';
-import 'package:foode/view/pages/home/general_page.dart';
+import 'package:foode/view/pages/auth/sign_up_page.dart';
+import 'package:foode/view/style/style.dart';
+import 'package:foode/view/widgets/auth_button.dart';
+import 'package:foode/view/widgets/ckeck_box.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
+import 'package:foode/view/widgets/facebook_google.dart';
+import 'package:foode/view/widgets/warning_container.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
+import '../home/general_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -20,6 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   bool value = false;
   bool isPhoneEmpty = false;
   bool isPasswordEmpty = false;
+  bool visibilityOfpasswor = true;
 
   @override
   void dispose() {
@@ -35,40 +41,62 @@ class _SignInPageState extends State<SignInPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            24.verticalSpace,
+            Image.asset(
+              'assets/image/LogoMainPage.png',
+              height: 192.h,
+              width: 199.2.w,
+            ),
+            Text('Sign in to your account',
+                style: Style.textStyleRegular(size: 23)),
+            32.verticalSpace,
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 114.4, vertical: 24),
-              child: Image.asset(
-                'assets/image/LogoMainPage.png',
-                height: 192,
-                width: 199.2,
+              padding: const EdgeInsets.only(
+                left: 48,
               ),
-            ),
-            Text(
-              'Sign in to your account',
-              style: GoogleFonts.sourceSansPro(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 48, top: 32),
               child: Row(
                 children: [
-                  Text(
-                    'Phone',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C3A4B)),
-                  ),
-                  Text(
-                    '*',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xffDA1414)),
-                  ),
+                  Text('Phone',
+                      style: Style.textStyleRegular2(
+                          textColor: const Color(0xff2C3A4B))),
+                  Text('*',
+                      style: Style.textStyleRegular2(
+                          size: 14, textColor: Style.primaryColor)),
+                ],
+              ),
+            ),
+            8.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: CustomTextFrom(
+                onchange: (value) {
+                  isPhoneEmpty = false;
+                  setState(() {});
+                },
+                controller: phone,
+                keyboardType: TextInputType.phone,
+                hintext: 'Phone Number',
+              ),
+            ),
+            8.verticalSpace,
+            isPhoneEmpty
+                ? const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Warning(
+                      text: 'Please fill the Phone',
+                    ))
+                : const SizedBox.shrink(),
+            20.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.only(left: 48),
+              child: Row(
+                children: [
+                  Text('Password',
+                      style: Style.textStyleRegular2(
+                          textColor: const Color(0xff2C3A4B))),
+                  Text('*',
+                      style: Style.textStyleRegular2(
+                          size: 14, textColor: Style.primaryColor)),
                 ],
               ),
             ),
@@ -76,309 +104,104 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
               child: CustomTextFrom(
                 onchange: (value) {
-                  isPhoneEmpty = false;
+                  isPasswordEmpty = false;
                   setState(() {});
                 },
-                controller: phone,
-                keyboardType: TextInputType.phone, hintext: 'Phone Number',
-               
-              ),
-            ),
-            isPhoneEmpty
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 24, top: 8, right: 24),
-                    child: Container(
-                      padding:
-                          const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          color: Color(0xffEBEEF2)),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.error,
-                              color: Color(0xff394452),
-                            ),
-                          ),
-                          Text(
-                            'Please fill the Password',
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff394452)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                : const SizedBox.shrink(),
-            Padding(
-              padding: const EdgeInsets.only(left: 48, top: 20),
-              child: Row(
-                children: [
-                  Text(
-                    'Password',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C3A4B)),
-                  ),
-                  Text(
-                    '*',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xffDA1414)),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-              child: CustomTextFrom(
-                // onchange: (value) {
-                //   isPasswordEmpty = false;
-                //   setState(() {});
-                // },
                 suffixicon: IconButton(
                     onPressed: () {
-                      context.read<AuthController>().hidePassword();
+                      visibilityOfpasswor = !visibilityOfpasswor;
+                      setState(() {});
                     },
-                    icon: Icon(
-                        context.read<AuthController>().visibilityOfpasswor
-                            ? Icons.visibility
-                            : Icons.visibility_off)),
+                    icon: Icon(visibilityOfpasswor
+                        ? Icons.visibility
+                        : Icons.visibility_off)),
                 controller: password,
-                obscureText:
-                    !context.read<AuthController>().visibilityOfpasswor,
+                obscureText: !visibilityOfpasswor,
                 obscuringCharacter: '*',
-                keyboardType: TextInputType.multiline, hintext: 'Password',
-             
+                keyboardType: TextInputType.multiline,
+                hintext: 'Password',
               ),
             ),
+            8.verticalSpace,
             isPasswordEmpty
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 24, top: 8, right: 24),
-                    child: Container(
-                      padding:
-                          const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          color: Color(0xffEBEEF2)),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.error,
-                              color: Color(0xff394452),
-                            ),
-                          ),
-                          Text(
-                            'Please fill the Password',
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff394452)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
+                ? const Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 24),
+                    child: Warning(
+                      text: 'Please fill the Password',
+                    ))
                 : const SizedBox.shrink(),
-            Padding(
-              padding: const EdgeInsets.only(left: 48, top: 22),
-              child: Row(
-                children: [
-                  Checkbox(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      side: MaterialStateBorderSide.resolveWith(
-                        (states) => const BorderSide(
-                          width: 1.0,
-                          color: Color(0xffFF1843),
-                        ),
-                      ),
-                      activeColor: const Color(0xffFF1843),
-                      value: value,
-                      onChanged: ((value) {
-                        setState(() {
-                          this.value = value!;
-                        });
-                      })),
-                  Text(
-                    'Remember me',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C3A4B)),
-                  ),
-                ],
-              ),
-            ),
-            context.watch<AuthController>().errorText != null
-                ? Text(context.watch<AuthController>().errorText ?? "")
-                : const SizedBox.shrink(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-              child: InkWell(
-                onTap: () {
-                  if (phone.text.isNotEmpty && password.text.isNotEmpty) {
-                    context
-                        .read<AuthController>()
-                        .login(phone.text, password.text, () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const GeneralPage()),
-                          (route) => false);
-                    });
-                  }
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 14, horizontal: 130),
-                  decoration: BoxDecoration(
-                    color: phone.text.isEmpty || password.text.isEmpty
-                        ? const Color.fromARGB(244, 235, 134, 164)
-                        : const Color(0xffFF1843),
-                    borderRadius: const BorderRadius.all(Radius.circular(32)),
-                  ),
-                  child: Center(
-                    child: context.watch<AuthController>().isLoading
-                        ? Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: LoadingAnimationWidget.inkDrop(
-                                color: const Color(0XFFF43F5E), size: 35),
-                          )
-                        : Text(
-                            'Sign in',
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                  ),
+            22.verticalSpace,
+            const Padding(
+                padding: EdgeInsets.only(
+                  left: 48,
                 ),
-              ),
-            ),
+                child: CkeckBox()),
+            context.watch<AuthController>().errorText == null
+                ? const SizedBox.shrink()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Text(
+                      context.watch<AuthController>().errorText ?? "",
+                      style: Style.textStyleRegular2(textColor: Colors.red),
+                    ),
+                  ),
+            24.verticalSpace,
             Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text(
-                'Forgot the password?',
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
+              child: InkWell(
+                  onTap: () {
+                    if (phone.text.isEmpty) {
+                      isPhoneEmpty = true;
+                    } else if (password.text.isEmpty) {
+                      isPasswordEmpty = true;
+                      setState(() {});
+                    }
+                    if (phone.text.isNotEmpty && password.text.isNotEmpty) {
+                      context
+                          .read<AuthController>()
+                          .login(phone.text, password.text, () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const GeneralPage()),
+                            (route) => false);
+                      });
+                    }
+                  },
+                  child: AuthButton(
+                    controller: phone,
+                    passw: password,
+                  )),
+            ),
+            20.verticalSpace,
+            Text('Forgot the password?',
+                style: Style.textStyleRegular2(textColor: Style.primaryColor)),
+            32.verticalSpace,
+            Text('or continue with',
+                style: Style.textStyleRegular2(textColor: Style.blackColor)),
+            24.verticalSpace,
+            const FacebookandGoogle(),
+            32.verticalSpace,
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(
+                'Don’t have an account?',
                 style: GoogleFonts.sourceSansPro(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xffF43F5E)),
+                    color: const Color(0xff858C94)),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 32),
-              child: Text(
-                'or continue with',
-                style: GoogleFonts.sourceSansPro(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: 57,
-                    width: 178,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 221, 206, 206)),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(12))),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 37.5, right: 12),
-                          child: Image.asset(
-                            'assets/image/facebook.png',
-                            height: 25,
-                            width: 25,
-                          ),
-                        ),
-                        Text(
-                          'Facebook',
-                          style: GoogleFonts.sourceSansPro(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 57,
-                    width: 178,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 221, 206, 206)),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(12))),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 37.5, right: 12),
-                          child: Image.asset(
-                            'assets/image/google.png',
-                            height: 25,
-                            width: 24,
-                          ),
-                        ),
-                        Text(
-                          'Google',
-                          style: GoogleFonts.sourceSansPro(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 32,
-              ),
-              child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  'Don’t have an account?',
-                  style: GoogleFonts.sourceSansPro(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xff858C94)),
-                ),
-                TextButton(
-                  onPressed: (() {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => const SignUpPage())));
-                  }),
-                  child: Text(
-                    'Sign up',
-                    style: GoogleFonts.sourceSansPro(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xffF43F5E),
-                    ),
-                  ),
-                )
-              ]),
-            )
+              TextButton(
+                onPressed: (() {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => const SignUpPage())));
+                }),
+                child: Text('Sign up',
+                    style:
+                        Style.textStyleRegular2(textColor: Style.primaryColor)),
+              )
+            ])
           ],
         ),
       ),
