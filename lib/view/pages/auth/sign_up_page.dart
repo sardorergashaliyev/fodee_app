@@ -109,9 +109,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   if (phone.text.isNotEmpty) {
                     context.read<AuthController>().sendSms(phone.text, () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const VerifyPage()));
+                        context,
+                        MaterialPageRoute(builder: (_) => const VerifyPage()),
+                      );
                     });
                   }
                 },

@@ -2,9 +2,8 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/auth_controller.dart';
-import 'package:foode/view/pages/home/home_page.dart';
 import 'package:provider/provider.dart';
-
+import 'home_page.dart';
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
@@ -15,10 +14,10 @@ class GeneralPage extends StatefulWidget {
 
 class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
-    const HomePage(),
-    const Placeholder(),
-    const Placeholder(),
-    const Placeholder(),
+    HomePage(),
+    Placeholder(),
+    Placeholder(),
+    Placeholder(),
   ];
 
   int currentIndex = 0;
@@ -45,21 +44,21 @@ class _GeneralPageState extends State<GeneralPage> {
             curve: Curves.bounceIn,
             items: [
               BottomNavyBarItem(
-                  icon: const Icon(Icons.home),
-                  title: const Text('Home'),
-                  activeColor: const Color(0xffFF1843)),
+                  icon: Icon(Icons.home),
+                  title: Text('Home'),
+                  activeColor: Color(0xffFF1843)),
               BottomNavyBarItem(
-                  icon: const Icon(Icons.shopping_basket),
-                  title: const Text('Order'),
-                  activeColor: const Color(0xffFF1843)),
+                  icon: Icon(Icons.shopping_basket),
+                  title: Text('Order'),
+                  activeColor: Color(0xffFF1843)),
               BottomNavyBarItem(
-                  icon: const Icon(Icons.message),
-                  title: const Text('Chat'),
-                  activeColor: const Color(0xffFF1843)),
+                  icon: Icon(Icons.message),
+                  title: Text('Chat'),
+                  activeColor: Color(0xffFF1843)),
               BottomNavyBarItem(
-                icon: const Icon(Icons.person),
-                title: const Text('Profile'),
-                activeColor: const Color(0xffFF1843),
+                icon: Icon(Icons.person),
+                title: Text('Profile'),
+                activeColor: Color(0xffFF1843),
               )
             ],
             onItemSelected: (value) {
