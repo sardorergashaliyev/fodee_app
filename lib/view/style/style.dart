@@ -6,12 +6,10 @@ class Style {
 
   // ---------- Color   ---------- //
 
-  static const primaryColor = Color(0x5ff06C149);
+  static const primaryColor = Color(0xffF43F5E);
   static const whiteColor = Colors.white;
-  static const BlueColor = Colors.cyan;
-  static const grenColor = Colors.white54;
-  static const blackColor = Color(0xff181A20);
-  static const bgcolorOfApp = Color(0xff181A20);
+  static const blackColor = Colors.black;
+  static const darkBgcolorOfApp = Color(0xff0D0D0D);
 
   // ---------- Gradient   ---------- //
 
@@ -19,49 +17,37 @@ class Style {
       begin: Alignment.bottomRight,
       end: Alignment.topLeft,
       colors: [
-        Color(0xff24A19C),
-        Color(0x4024A19C),
+        Color(0xffFF1843),
+        Color(0xffFF7E95),
       ]);
 
-  static const primaryDisabledGradient = LinearGradient(
-      begin: Alignment.bottomRight,
-      end: Alignment.topLeft,
-      colors: [
-        Color.fromARGB(255, 167, 221, 219),
-        Color(0x1524A19C),
-      ]);
+  static const primaryDisabledColor = Color.fromARGB(244, 235, 134, 164);
 
-  static const darkModeColor = Colors.black;
+  
 
-  static textStyleSemiBold({double size = 18, Color textColor = blackColor}) =>
-      TextStyle(
-        fontSize: size,
-        color: textColor,
+  static textStyleRegular(
+          {double size = 18,
+            Color textColor = blackColor,
+          
+         }) =>
+      GoogleFonts.sourceSansPro(
         fontWeight: FontWeight.w600,
+         color: textColor,
+         
+       
+        fontSize: size
       );
 
-  static textStyleNormal(
+
+        static textStyleRegular2(
           {double size = 16,
           Color textColor = blackColor,
-          bool isDone = false}) =>
-      TextStyle(
-          fontSize: size,
-          color: textColor,
-          fontWeight: FontWeight.w700,
-          decoration:
-              isDone ? TextDecoration.lineThrough : TextDecoration.none);
-
-  static textStyleBold({double size = 18, Color textColor = blackColor}) =>
-      TextStyle(fontSize: size, color: textColor, fontWeight: FontWeight.bold);
-
-  static textStyleSemiRegular(
-          {double size = 16, Color textColor = blackColor}) =>
-      TextStyle(fontSize: size, color: textColor, fontWeight: FontWeight.w400);
-
-  static textStyleSeeAll({
-    double size = 16,
-    Color textColor = primaryColor,
-  }) =>
-      GoogleFonts.urbanist(
-          fontSize: 16, fontWeight: FontWeight.w700, color: Style.primaryColor);
+          
+         }) =>
+      GoogleFonts.sourceSansPro(
+        fontWeight: FontWeight.w600,
+        color: textColor,
+        fontSize: size
+      );
+  
 }
