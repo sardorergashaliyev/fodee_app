@@ -14,10 +14,10 @@ class GeneralPage extends StatefulWidget {
 
 class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
-    HomePage(),
-    Placeholder(),
-    Placeholder(),
-    Placeholder(),
+    const HomePage(),
+    const Placeholder(),
+    const Placeholder(),
+    const Placeholder(),
   ];
 
   int currentIndex = 0;
@@ -44,21 +44,21 @@ class _GeneralPageState extends State<GeneralPage> {
             curve: Curves.bounceIn,
             items: [
               BottomNavyBarItem(
-                  icon: Icon(Icons.home),
-                  title: Text('Home'),
-                  activeColor: Color(0xffFF1843)),
+                  icon: const Icon(Icons.home),
+                  title: const Text('Home'),
+                  activeColor: const Color(0xffFF1843)),
               BottomNavyBarItem(
-                  icon: Icon(Icons.shopping_basket),
-                  title: Text('Order'),
-                  activeColor: Color(0xffFF1843)),
+                  icon: const Icon(Icons.shopping_basket),
+                  title: const Text('Order'),
+                  activeColor: const Color(0xffFF1843)),
               BottomNavyBarItem(
-                  icon: Icon(Icons.message),
-                  title: Text('Chat'),
-                  activeColor: Color(0xffFF1843)),
+                  icon: const Icon(Icons.message),
+                  title: const Text('Chat'),
+                  activeColor: const Color(0xffFF1843)),
               BottomNavyBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Profile'),
-                activeColor: Color(0xffFF1843),
+                icon: const Icon(Icons.person),
+                title: const Text('Profile'),
+                activeColor: const Color(0xffFF1843),
               )
             ],
             onItemSelected: (value) {
