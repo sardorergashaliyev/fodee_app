@@ -8,6 +8,7 @@ import 'package:foode/view/widgets/auth_button.dart';
 import 'package:foode/view/widgets/ckeck_box.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:foode/view/widgets/facebook_google.dart';
+import 'package:foode/view/widgets/fullogo_image.dart';
 import 'package:foode/view/widgets/on_unfocused.dart';
 import 'package:foode/view/widgets/warning_container.dart';
 import 'package:provider/provider.dart';
@@ -39,14 +40,9 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 114.4, vertical: 24),
-                  child: Image.asset(
-                    'assets/image/LogoMainPage.png',
-                    height: 192.h,
-                    width: 199.2.w,
-                  ),
+                const FullogoImage(
+                  height: 192,
+                  width: 192,
                 ),
                 Text('Sign up for free',
                     style: Style.textStyleRegular(
@@ -121,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     },
                     child: AuthButton(
-                      controller: phone,
+                      controller: phone, text: 'Sign up',
                     ),
                   ),
                 ),

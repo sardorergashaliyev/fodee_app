@@ -8,12 +8,10 @@ class FullogoImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Image.asset(
-        'assets/image/LogoMainPage.png',
-        height: height,
-        width: width,
-      ),
+    return Image.asset(
+      'assets/image/LogoMainPage.png',
+      height: height,
+      width: width,
     );
   }
 }

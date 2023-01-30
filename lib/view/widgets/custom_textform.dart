@@ -5,10 +5,11 @@ class CustomTextFrom extends StatelessWidget {
   final String hintext;
   final String? obscuringCharacter;
   final Widget? suffixicon;
+  final bool? visibility;
   final TextInputType keyboardType;
   final ValueChanged<String>? onchange;
   final bool? obscureText;
-  
+
   const CustomTextFrom({
     Key? key,
     required this.controller,
@@ -17,12 +18,14 @@ class CustomTextFrom extends StatelessWidget {
     this.onchange,
     this.suffixicon,
     this.obscureText,
-    this.obscuringCharacter,  
+    this.obscuringCharacter,
+    this.visibility,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: visibility ?? false,
       validator: (value) {
         return '';
       },

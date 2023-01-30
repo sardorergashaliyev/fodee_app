@@ -28,7 +28,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
                           onPressed: () {
                             context.read<AuthController>().getImageCamera();
                           },
-                          child: const Text("Take phote")),
+                          child: const Text("Take photo")),
                       ElevatedButton(
                           onPressed: () {
                             context.read<AuthController>().getImageGallery();

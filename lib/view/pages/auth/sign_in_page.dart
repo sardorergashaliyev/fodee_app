@@ -46,12 +46,14 @@ class _SignInPageState extends State<SignInPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 24.verticalSpace,
-                FullogoImage(
-                  height: 200,
-                  width: 200,
+                const FullogoImage(
+                  height: 192,
+                  width: 192,
                 ),
-                Text('Sign in to your account',
-                    style: Style.textStyleRegular(size: 23)),
+                Text(
+                  'Sign in to your account',
+                  style: Style.textStyleRegular(size: 23),
+                ),
                 32.verticalSpace,
                 Padding(
                   padding: const EdgeInsets.only(
@@ -59,12 +61,17 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   child: Row(
                     children: [
-                      Text('Phone',
-                          style: Style.textStyleRegular2(
-                              textColor: const Color(0xff2C3A4B))),
-                      Text('*',
-                          style: Style.textStyleRegular2(
-                              size: 14, textColor: Style.primaryColor)),
+                      Text(
+                        'Phone',
+                        style: Style.textStyleRegular2(
+                          textColor: const Color(0xff2C3A4B),
+                        ),
+                      ),
+                      Text(
+                        '*',
+                        style: Style.textStyleRegular2(
+                            size: 14, textColor: Style.primaryColor),
+                      ),
                     ],
                   ),
                 ),
@@ -94,18 +101,24 @@ class _SignInPageState extends State<SignInPage> {
                   padding: const EdgeInsets.only(left: 48),
                   child: Row(
                     children: [
-                      Text('Password',
-                          style: Style.textStyleRegular2(
-                              textColor: const Color(0xff2C3A4B))),
-                      Text('*',
-                          style: Style.textStyleRegular2(
-                              size: 14, textColor: Style.primaryColor)),
+                      Text(
+                        'Password',
+                        style: Style.textStyleRegular2(
+                          textColor: const Color(0xff2C3A4B),
+                        ),
+                      ),
+                      Text(
+                        '*',
+                        style: Style.textStyleRegular2(
+                            size: 14, textColor: Style.primaryColor),
+                      ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
+                    visibility: false,
                     onchange: (value) {
                       isPasswordEmpty = false;
                       setState(() {});
@@ -115,7 +128,7 @@ class _SignInPageState extends State<SignInPage> {
                           visibilityOfpasswor = !visibilityOfpasswor;
                           setState(() {});
                         },
-                        icon: Icon(visibilityOfpasswor
+                        icon: Icon(visibilityOfpasswor == false
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     controller: password,
@@ -168,7 +181,8 @@ class _SignInPageState extends State<SignInPage> {
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const GeneralPage()),
+                                  builder: (_) => const GeneralPage(),
+                                ),
                                 (route) => false);
                           });
                         }
@@ -176,38 +190,48 @@ class _SignInPageState extends State<SignInPage> {
                       child: AuthButton(
                         controller: phone,
                         passw: password,
+                        text: 'Sign in',
                       )),
                 ),
                 20.verticalSpace,
-                Text('Forgot the password?',
-                    style:
-                        Style.textStyleRegular2(textColor: Style.primaryColor)),
+                Text(
+                  'Forgot the password?',
+                  style: Style.textStyleRegular2(textColor: Style.primaryColor),
+                ),
                 32.verticalSpace,
-                Text('or continue with',
-                    style:
-                        Style.textStyleRegular2(textColor: Style.blackColor)),
+                Text(
+                  'or continue with',
+                  style: Style.textStyleRegular2(textColor: Style.blackColor),
+                ),
                 24.verticalSpace,
                 const FacebookandGoogle(),
                 24.verticalSpace,
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text(
-                    'Don’t have an account?',
-                    style: GoogleFonts.sourceSansPro(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have an account?',
+                      style: GoogleFonts.sourceSansPro(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xff858C94)),
-                  ),
-                  TextButton(
-                    onPressed: (() {
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (a) => const SignUpPage()),
-                          (route) => false);
-                    }),
-                    child: Text('Sign Up',
-                        style: Style.textStyleRegular2(
-                            textColor: Style.primaryColor)),
-                  )
-                ])
+                        color: const Color(0xff858C94),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: (() {
+                        context.read<AuthController>().errorText = '';
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (a) => const SignUpPage(),
+                            ),
+                            (route) => false);
+                      }),
+                      child: Text('Sign Up',
+                          style: Style.textStyleRegular2(
+                              textColor: Style.primaryColor)),
+                    )
+                  ],
+                )
               ],
             ),
           ),

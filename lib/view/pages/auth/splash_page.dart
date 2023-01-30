@@ -51,6 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           Container(
             width: double.infinity,
+            height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/image/Group.png'),
