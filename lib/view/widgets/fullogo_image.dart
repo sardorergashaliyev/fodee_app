@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class FullogoImage extends StatelessWidget {
+  final double height;
+  final double width;
+  const FullogoImage({super.key, this.height = 100, this.width = 100});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Image.asset(
+        'assets/image/LogoMainPage.png',
+        height: height,
+        width: width,
+      ),
+    );
+  }
+}

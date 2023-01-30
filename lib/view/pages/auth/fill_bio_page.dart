@@ -130,7 +130,7 @@ class _FillBioPageState extends State<FillBioPage> {
                               ),
                             ),
                             Text(
-                              'Please fill the Full Name',
+                              'Please fill this field',
                               style: GoogleFonts.sourceSansPro(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,

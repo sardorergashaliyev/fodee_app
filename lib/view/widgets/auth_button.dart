@@ -7,13 +7,13 @@ import '../style/style.dart';
 class AuthButton extends StatelessWidget {
   final TextEditingController controller;
   final TextEditingController? passw;
-  const AuthButton({super.key, required this.controller,  this.passw});
+  const AuthButton({super.key, required this.controller, this.passw});
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
-      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 130),
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 50),
       decoration: BoxDecoration(
         color: controller.text.isEmpty
             ? const Color.fromARGB(244, 235, 134, 164)
@@ -27,7 +27,7 @@ class AuthButton extends StatelessWidget {
                 child: LoadingAnimationWidget.inkDrop(
                     color: Style.whiteColor, size: 35),
               )
-            : Text('Sign up',
+            : Text('Sign in',
                 style: Style.textStyleRegular(textColor: Style.whiteColor)),
       ),
     );

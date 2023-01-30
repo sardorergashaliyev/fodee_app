@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foode/controllers/auth_controller.dart';
 import 'package:foode/view/pages/auth/fill_bio_page.dart';
+import 'package:foode/view/widgets/on_unfocused.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -32,47 +33,49 @@ class _VerifyPageState extends State<VerifyPage> {
       appBar: AppBar(
         title: const Text("Verification"),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: PinFieldAutoFill(
-                controller: controller,
-                cursor: Cursor(color: Colors.black, enabled: true, width: 2),
-                decoration: const BoxLooseDecoration(
-                  gapSpace: 10,
-                  bgColorBuilder: FixedColorBuilder(
-                    Colors.white,
+      body: OnUnFocusTap(
+        child: Column(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: PinFieldAutoFill(
+                  controller: controller,
+                  cursor: Cursor(color: Colors.black, enabled: true, width: 2),
+                  decoration: const BoxLooseDecoration(
+                    gapSpace: 10,
+                    bgColorBuilder: FixedColorBuilder(
+                      Colors.white,
+                    ),
+                    strokeColorBuilder: FixedColorBuilder(
+                      Colors.black,
+                    ),
                   ),
-                  strokeColorBuilder: FixedColorBuilder(
-                    Colors.black,
-                  ),
+                  onCodeSubmitted: (s) {},
+                  onCodeChanged: (s) {},
+                  currentCode: "",
                 ),
-                onCodeSubmitted: (s) {},
-                onCodeChanged: (s) {},
-                currentCode: "",
               ),
             ),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                context.read<AuthController>().checkCode(controller.text, () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (_) => const FillBioPage()),
-                      (route) => false);
-                });
-              },
-              child: context.watch<AuthController>().isLoading
-                  ? const Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                    )
-                  : const Text("Check"))
-        ],
+            ElevatedButton(
+                onPressed: () {
+                  context.read<AuthController>().checkCode(controller.text, () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => const FillBioPage()),
+                        (route) => false);
+                  });
+                },
+                child: context.watch<AuthController>().isLoading
+                    ? const Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      )
+                    : const Text("Check"))
+          ],
+        ),
       ),
     );
   }

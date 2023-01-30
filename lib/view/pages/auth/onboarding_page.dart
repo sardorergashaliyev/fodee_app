@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/view/pages/auth/sign_in_page.dart';
 import 'package:foode/view/style/style.dart';
 
@@ -28,9 +29,11 @@ class OnBoardingPage extends StatelessWidget {
                             size: 33, textColor: Style.whiteColor)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 40),
+                    padding:
+                        const EdgeInsets.only(bottom: 40, left: 24, right: 24),
                     child: Text(
                         'The best food ordering and delivery app of the century',
+                        textAlign: TextAlign.center,
                         style: Style.textStyleRegular2(
                             textColor: Style.whiteColor)),
                   ),
@@ -39,12 +42,14 @@ class OnBoardingPage extends StatelessWidget {
                         const EdgeInsets.only(bottom: 48, left: 24, right: 24),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: ((context) => const SignInPage())));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: ((context) => const SignInPage()),
+                          ),
+                        );
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 14, horizontal: 169.5),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(32)),
                             gradient: Style.linearGradient),

@@ -9,8 +9,6 @@ class CustomTextFrom extends StatelessWidget {
   final ValueChanged<String>? onchange;
   final bool? obscureText;
   
-
-
   const CustomTextFrom({
     Key? key,
     required this.controller,
@@ -36,11 +34,11 @@ class CustomTextFrom extends StatelessWidget {
         suffixIcon: suffixicon,
         contentPadding:
             const EdgeInsets.only(left: 24, right: 80, top: 12, bottom: 12),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white, width: 0.0),
         ),
-        focusedErrorBorder: new OutlineInputBorder(
-          borderSide: new BorderSide(color: Colors.blue, width: 0.0),
+        focusedErrorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue, width: 0.0),
         ),
         border: const OutlineInputBorder(
             borderSide: BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
