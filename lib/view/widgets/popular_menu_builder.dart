@@ -13,10 +13,12 @@ class MenuListView extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: 3,
         itemBuilder: ((context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+              ),
               child: Container(
-                margin: const EdgeInsets.only(bottom: 30),
-                height: 88.h,
+                margin: const EdgeInsets.only(bottom: 12),
+                height: 100.h,
                 width: 380.w,
                 decoration: BoxDecoration(
                     boxShadow: [

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foode/controllers/auth_controller.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
-
-import '../../controllers/auth_controller.dart';
 import '../pages/home/general_page.dart';
 import '../style/style.dart';
 
@@ -42,7 +41,7 @@ class FacebookandGoogle extends StatelessWidget {
                 12.horizontalSpace,
                 context.watch<AuthController>().isFacebookLoading
                     ? Padding(
-                        padding: const EdgeInsets.all(2.0),
+                        padding: EdgeInsets.all(2.0),
                         child: LoadingAnimationWidget.inkDrop(
                           color: Style.primaryColor,
                           size: 24,
@@ -84,7 +83,7 @@ class FacebookandGoogle extends StatelessWidget {
                 12.horizontalSpace,
                 context.watch<AuthController>().isGoogleLoading
                     ? Padding(
-                        padding: const EdgeInsets.all(2.0),
+                        padding: EdgeInsets.all(2.0),
                         child: LoadingAnimationWidget.inkDrop(
                             color: Style.primaryColor, size: 24),
                       )

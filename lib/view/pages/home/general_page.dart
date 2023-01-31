@@ -2,7 +2,10 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/auth_controller.dart';
+import 'package:foode/view/style/style.dart';
 import 'package:provider/provider.dart';
+
+import '../product/add_product_page.dart';
 import 'home_page.dart';
 
 class GeneralPage extends StatefulWidget {
@@ -16,6 +19,7 @@ class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
     const HomePage(),
     const Placeholder(),
+    const AddProductPage(),
     const Placeholder(),
     const Placeholder(),
   ];
@@ -32,33 +36,39 @@ class _GeneralPageState extends State<GeneralPage> {
       backgroundColor: Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 8.h),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(12.r)),
           child: BottomNavyBar(
-            selectedIndex: currentIndex,
-            showElevation: true,
+            selectedIndex: context.watch<AuthController>().currentIndex,
+            // showElevation: true,
             backgroundColor: Colors.white,
             containerHeight: 91,
-            itemCornerRadius: 24,
-            curve: Curves.bounceIn,
+            itemCornerRadius: 12,
+            curve: Curves.easeIn,
             items: [
               BottomNavyBarItem(
                   icon: const Icon(Icons.home),
                   title: const Text('Home'),
-                  activeColor: const Color(0xffFF1843)),
+                  activeColor: Style.primaryColor),
               BottomNavyBarItem(
                   icon: const Icon(Icons.shopping_basket),
                   title: const Text('Order'),
-                  activeColor: const Color(0xffFF1843)),
+                  activeColor: Style.primaryColor),
+              BottomNavyBarItem(
+                  icon: const Icon(
+                    Icons.add_circle_outline_sharp,
+                  ),
+                  title: const Text('Add Product'),
+                  activeColor: Style.primaryColor),
               BottomNavyBarItem(
                   icon: const Icon(Icons.message),
                   title: const Text('Chat'),
-                  activeColor: const Color(0xffFF1843)),
+                  activeColor: Style.primaryColor),
               BottomNavyBarItem(
                 icon: const Icon(Icons.person),
                 title: const Text('Profile'),
-                activeColor: const Color(0xffFF1843),
+                activeColor: Style.primaryColor,
               )
             ],
             onItemSelected: (value) {
