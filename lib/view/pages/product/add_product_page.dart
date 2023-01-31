@@ -57,8 +57,8 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
               50.verticalSpace,
               DropdownButtonFormField(
-                dropdownColor: Color.fromARGB(255, 230, 226, 226),
-                borderRadius: BorderRadius.all(Radius.circular(28)),
+                dropdownColor: const Color.fromARGB(255, 230, 226, 226),
+                borderRadius: const BorderRadius.all(Radius.circular(28)),
                 autofocus: true,
                 value: context.watch<ProductController>().listOfCategory.first,
                 items: context
@@ -67,7 +67,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                     .toList(),
                 onChanged: (s) {},
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Category",
                   border: OutlineInputBorder(
                       borderSide:
@@ -96,7 +96,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 hintext: '',
               ),
               30.verticalSpace,
-              ElevatedButton(onPressed: () {}, child: Text("Save"))
+              ElevatedButton(onPressed: () {}, child: const Text("Save"))
             ],
           ),
         ),

@@ -32,7 +32,7 @@ class AuthController extends ChangeNotifier {
 
   setgender(String value) {
     gender = value;
-     notifyListeners();
+    notifyListeners();
   }
 
   Future<bool> checkPhone(String phone) async {
@@ -109,7 +109,7 @@ class AuthController extends ChangeNotifier {
       required String username,
       required String password,
       required String email,
-      required String  gender,
+      required String gender,
       required String birth,
       required VoidCallback onSuccess}) {
     userModel = UserModel(
@@ -299,8 +299,8 @@ class AuthController extends ChangeNotifier {
         await LocalStore.setDocId(res.docs.first.id);
       }
     }
-    onSuccess();
     isFacebookLoading = false;
+    onSuccess();
     notifyListeners();
   }
 }

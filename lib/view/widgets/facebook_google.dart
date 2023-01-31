@@ -41,7 +41,7 @@ class FacebookandGoogle extends StatelessWidget {
                 12.horizontalSpace,
                 context.watch<AuthController>().isFacebookLoading
                     ? Padding(
-                        padding: EdgeInsets.all(2.0),
+                        padding: const EdgeInsets.all(2.0),
                         child: LoadingAnimationWidget.inkDrop(
                           color: Style.primaryColor,
                           size: 24,
@@ -83,7 +83,7 @@ class FacebookandGoogle extends StatelessWidget {
                 12.horizontalSpace,
                 context.watch<AuthController>().isGoogleLoading
                     ? Padding(
-                        padding: EdgeInsets.all(2.0),
+                        padding: const EdgeInsets.all(2.0),
                         child: LoadingAnimationWidget.inkDrop(
                             color: Style.primaryColor, size: 24),
                       )
