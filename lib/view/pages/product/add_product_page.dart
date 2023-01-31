@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foode/controllers/auth_controller.dart';
 import 'package:foode/controllers/product_controller.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AddProductPage extends StatefulWidget {
@@ -15,9 +17,12 @@ class _AddProductPageState extends State<AddProductPage> {
   final TextEditingController nameTextEditController = TextEditingController();
   final TextEditingController descTextEditController = TextEditingController();
   final TextEditingController priceTextEditController = TextEditingController();
-  final TextEditingController categoryTextEditController =
-      TextEditingController();
   final TextEditingController typeEditController = TextEditingController();
+
+  bool isNameEmpty = true;
+  bool isDescEmpty = true;
+  bool isPriceEmpty = true;
+  bool isTypeEmpty = true;
 
   @override
   void initState() {
@@ -38,20 +43,31 @@ class _AddProductPageState extends State<AddProductPage> {
             children: [
               50.verticalSpace,
               CustomTextFrom(
+                label: 'Name',
+                onchange: (value) {
+                  isNameEmpty = false;
+                  setState(() {});
+                },
                 controller: nameTextEditController,
-                label: "name",
+                keyboardType: TextInputType.emailAddress,
                 hintext: '',
               ),
               50.verticalSpace,
               CustomTextFrom(
+                label: 'Description',
+                onchange: (value) {
+                  isDescEmpty = false;
+                  setState(() {});
+                },
                 controller: descTextEditController,
-                label: "desc",
+                keyboardType: TextInputType.emailAddress,
                 hintext: '',
               ),
               50.verticalSpace,
               CustomTextFrom(
+                onchange: (value) {},
                 controller: priceTextEditController,
-                label: "price",
+                label: "Price",
                 keyboardType: TextInputType.number,
                 hintext: '',
               ),
@@ -85,18 +101,67 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
               50.verticalSpace,
               CustomTextFrom(
-                controller: categoryTextEditController,
-                label: "category",
-                hintext: '',
-              ),
-              50.verticalSpace,
-              CustomTextFrom(
+                label: 'Type',
+                onchange: (value) {
+                  isTypeEmpty = false;
+                  setState(() {});
+                },
                 controller: typeEditController,
-                label: "type",
+                keyboardType: TextInputType.emailAddress,
                 hintext: '',
               ),
               30.verticalSpace,
-              ElevatedButton(onPressed: () {}, child: const Text("Save"))
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                child: InkWell(
+                  onTap: () async {
+                    if (nameTextEditController.text.isEmpty) {
+                      isNameEmpty = true;
+                      setState(() {});
+                    } else if (descTextEditController.text.isEmpty) {
+                      isDescEmpty = true;
+                      setState(() {});
+                    } else if (priceTextEditController.text.isEmpty) {
+                      isPriceEmpty = true;
+                      setState(() {});
+                    }
+                    if (nameTextEditController.text.isNotEmpty &&
+                        descTextEditController.text.isNotEmpty &&
+                        priceTextEditController.text.isNotEmpty &&
+                        typeEditController.text.isEmpty) {
+                      context.read<ProductController>().createProduct(
+                          name: nameTextEditController.text,
+                          desc: descTextEditController.text,
+                          price: priceTextEditController.text);
+                    }
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 400),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 18, horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: nameTextEditController.text.isEmpty ||
+                              descTextEditController.text.isEmpty ||
+                              priceTextEditController.text.isEmpty ||
+                              typeEditController.text.isEmpty
+                          ? const Color.fromARGB(244, 235, 134, 164)
+                          : const Color(0xffFF1843),
+                      borderRadius: const BorderRadius.all(Radius.circular(32)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Save',
+                        style: GoogleFonts.sourceSansPro(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              100.verticalSpace,
             ],
           ),
         ),

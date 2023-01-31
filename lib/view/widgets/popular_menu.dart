@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foode/controllers/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class PopularMenu extends StatefulWidget {
   const PopularMenu({super.key});
@@ -98,58 +100,53 @@ class _PopularMenuState extends State<PopularMenu> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, index) {
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount:
+                      context.watch<HomeController>().listOfProduct.length,
+                  itemBuilder: (context, index) {
                     return Container(
-                      height: 88,
-                      margin: const EdgeInsets.only(bottom: 12),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 241, 241, 241),
-                        borderRadius: BorderRadius.circular(24),
-                      ),
+                      margin: const EdgeInsets.all(16),
+                      width: double.infinity,
+                      height: 90,
+                      color: Colors.pinkAccent,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          12.horizontalSpace,
-                          SizedBox(
-                            width: 64,
-                            height: 64,
-                            child: Image.asset('assets/image/food.png'),
-                          ),
-                          20.horizontalSpace,
+                          context
+                                      .watch<HomeController>()
+                                      .listOfProduct[index]
+                                      .image ==
+                                  null
+                              ? const SizedBox.shrink()
+                              : Image.network(
+                                  context
+                                          .watch<HomeController>()
+                                          .listOfProduct[index]
+                                          .image ??
+                                      "",
+                                  height: 64,
+                                  width: 64,
+                                ),
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              20.verticalSpace,
-                              const Text(
-                                'salom',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              8.verticalSpace,
-                              const Text(
-                                'title',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: Color(0xff858C94),
-                                ),
-                              )
+                              Text(context
+                                      .watch<HomeController>()
+                                      .listOfProduct[index]
+                                      .name ??
+                                  ""),
+                              Text(context
+                                      .watch<HomeController>()
+                                      .listOfProduct[index]
+                                      .desc ??
+                                  ""),
                             ],
                           ),
                           const Spacer(),
-                          const Text(
-                            '0.0',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 29,
-                              color: Color(0xffF43F5E),
-                            ),
-                          ),
-                          32.horizontalSpace,
+                          Text(context
+                              .watch<HomeController>()
+                              .listOfProduct[index]
+                              .price
+                              .toString())
                         ],
                       ),
                     );

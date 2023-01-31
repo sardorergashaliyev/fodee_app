@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foode/controllers/home_controller.dart';
 import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<UserController>().getUser();
+
+      context.read<HomeController>()
+        ..getBanners()
+        ..getProduct()
+        ..getCategory();
     });
     super.initState();
   }
@@ -46,8 +52,8 @@ class _HomePageState extends State<HomePage> {
                           radius: 100,
                           height: 80.h,
                           width: 80.w,
-                          image:
-                              context.watch<UserController>().user?.avatar ?? ""),
+                          image: context.watch<UserController>().user?.avatar ??
+                              ""),
                       24.horizontalSpace,
                       Expanded(
                         child: Column(
@@ -147,7 +153,8 @@ class _HomePageState extends State<HomePage> {
                         width: 50,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(12)),
                             color: const Color(0xffF43F5E).withOpacity(0.1)),
                         child: const Icon(
                           Icons.filter_list,
@@ -189,7 +196,6 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          32.verticalSpace,
                           SizedBox(
                               height: 190.h, child: const RestaurantListview()),
                           32.verticalSpace,
