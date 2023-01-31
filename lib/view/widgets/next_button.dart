@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foode/controllers/auth_controller.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
-import '../../controllers/auth_controller.dart';
 import '../style/style.dart';
 
 class NextButton extends StatelessWidget {

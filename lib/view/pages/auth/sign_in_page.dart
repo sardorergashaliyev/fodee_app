@@ -118,7 +118,6 @@ class _SignInPageState extends State<SignInPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
-                    visibility: false,
                     onchange: (value) {
                       isPasswordEmpty = false;
                       setState(() {});
@@ -132,7 +131,6 @@ class _SignInPageState extends State<SignInPage> {
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     controller: password,
-                    obscureText: !visibilityOfpasswor,
                     obscuringCharacter: '*',
                     keyboardType: TextInputType.multiline,
                     hintext: 'Password',

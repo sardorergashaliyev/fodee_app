@@ -52,6 +52,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   cached_network_image: ^3.2.3
   google_sign_in: ^5.4.4
+  flutter_login_facebook: ^1.6.2
 
 dev_dependencies:
   flutter_test:

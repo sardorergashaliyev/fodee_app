@@ -3,10 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:foode/controllers/local/local.dart';
-import 'package:foode/model/user_model.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../model/user_model.dart';
 
 class AuthController extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -14,21 +17,22 @@ class AuthController extends ChangeNotifier {
   UserModel? userModel;
   String verificationId = '';
   String phone = "";
-  String? errorText;
+  String? errorText = '';
   String imagePath = "";
   bool isLoading = false;
   int currentIndex = 0;
-  bool isVisibility = true;
-  bool visibilityOfpasswor = false;
-
-  hidePassword() {
-    visibilityOfpasswor = !visibilityOfpasswor;
-    notifyListeners();
-  }
+  bool isGoogleLoading = false;
+  bool isFacebookLoading = false;
+  String gender = '';
 
   setIndex(int index) {
     currentIndex = index;
     notifyListeners();
+  }
+
+  setgender(String value) {
+    gender = value;
+     notifyListeners();
   }
 
   Future<bool> checkPhone(String phone) async {
@@ -62,10 +66,14 @@ class AuthController extends ChangeNotifier {
       await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: phone,
         verificationCompleted: (PhoneAuthCredential credential) {
+          isLoading = false;
+          notifyListeners();
           print(credential.toString());
         },
         verificationFailed: (FirebaseAuthException e) {
+          errorText = 'The provided phone number is not valid ';
           print(e.toString());
+          notifyListeners();
         },
         codeSent: (String verificationId, int? resendToken) {
           this.phone = phone;
@@ -101,7 +109,7 @@ class AuthController extends ChangeNotifier {
       required String username,
       required String password,
       required String email,
-      required String gender,
+      required String  gender,
       required String birth,
       required VoidCallback onSuccess}) {
     userModel = UserModel(
@@ -168,6 +176,11 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
+  deleteImage() {
+    imagePath = '';
+    notifyListeners();
+  }
+
   createUser(VoidCallback onSuccess) async {
     final storageRef = FirebaseStorage.instance
         .ref()
@@ -193,13 +206,101 @@ class AuthController extends ChangeNotifier {
       onSuccess();
     });
   }
-  deleteImage() {
-    imagePath = '';
+
+  loginGoogle(VoidCallback onSuccess) async {
+    isGoogleLoading = true;
+    notifyListeners();
+    GoogleSignIn googleSignIn = GoogleSignIn();
+
+    GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication? googleAuth = await googleUser!.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    final userObj =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userObj.additionalUserInfo?.isNewUser);
+    if (userObj.additionalUserInfo?.isNewUser ?? true) {
+      // sing in
+      firestore
+          .collection("users")
+          .add(UserModel(
+                  name: userObj.user?.displayName ?? "",
+                  username: userObj.user?.displayName ?? "",
+                  password: userObj.user?.uid ?? "",
+                  email: userObj.user?.email ?? "",
+                  gender: "",
+                  phone: userObj.user?.phoneNumber ?? "",
+                  birth: "",
+                  avatar: userObj.user?.photoURL ?? "")
+              .toJson())
+          .then((value) async {
+        await LocalStore.setDocId(value.id);
+        googleSignIn.signOut();
+      });
+    } else {
+      // sing up
+      var res = await firestore
+          .collection("users")
+          .where("email", isEqualTo: userObj.user?.email)
+          .get();
+
+      if (res.docs.isNotEmpty) {
+        await LocalStore.setDocId(res.docs.first.id);
+      }
+    }
+    onSuccess();
+    isGoogleLoading = false;
     notifyListeners();
   }
 
-  onChange(){
-    isVisibility = !isVisibility;
+  loginFacebook(VoidCallback onSuccess) async {
+    isFacebookLoading = true;
+    notifyListeners();
+
+    final fb = FacebookLogin();
+
+    final user = await fb.logIn(permissions: [
+      FacebookPermission.email,
+      FacebookPermission.publicProfile
+    ]);
+
+    final OAuthCredential credential =
+        FacebookAuthProvider.credential(user.accessToken?.token ?? "");
+
+    final userObj =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    if (userObj.additionalUserInfo?.isNewUser ?? true) {
+      // sing in
+      firestore
+          .collection("users")
+          .add(UserModel(
+                  name: userObj.user?.displayName ?? "",
+                  username: userObj.user?.displayName ?? "",
+                  password: userObj.user?.uid ?? "",
+                  email: userObj.user?.email ?? "",
+                  gender: "",
+                  phone: userObj.user?.phoneNumber ?? "",
+                  birth: "",
+                  avatar: userObj.user?.photoURL ?? "")
+              .toJson())
+          .then((value) async {
+        await LocalStore.setDocId(value.id);
+      });
+    } else {
+      // sing up
+      var res = await firestore
+          .collection("users")
+          .where("email", isEqualTo: userObj.user?.email)
+          .get();
+
+      if (res.docs.isNotEmpty) {
+        await LocalStore.setDocId(res.docs.first.id);
+      }
+    }
+    onSuccess();
+    isFacebookLoading = false;
     notifyListeners();
   }
 }
