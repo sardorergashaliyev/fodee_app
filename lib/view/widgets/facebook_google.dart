@@ -48,9 +48,11 @@ class FacebookandGoogle extends StatelessWidget {
             onTap: () async {
               try {
                 GoogleSignIn googleSignIn = GoogleSignIn();
+                // ignore: unused_local_variable
                 var data = await googleSignIn.signIn();
+                // ignore: use_build_context_synchronously
                 context.read<AuthController>().createUser(() {
-                  
+
                 });
                 // print('id ${data?.id}');
                 // print('id ${data?.email}');

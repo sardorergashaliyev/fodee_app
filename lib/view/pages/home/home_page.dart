@@ -1,14 +1,8 @@
-import 'dart:io';
-
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:foode/controllers/user_controller.dart';
 import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
-import 'package:foode/view/widgets/popular_res.dart';
-import 'package:foode/view/widgets/popular_menu.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {

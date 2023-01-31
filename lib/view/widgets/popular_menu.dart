@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopularMenu extends StatefulWidget {
-  PopularMenu({super.key});
+  const PopularMenu({super.key});
 
   @override
   State<PopularMenu> createState() => _PopularMenuState();
 }
 
 class _PopularMenuState extends State<PopularMenu> {
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +112,7 @@ class _PopularMenuState extends State<PopularMenu> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           12.horizontalSpace,
-                          Container(
+                          SizedBox(
                             width: 64,
                             height: 64,
                             child: Image.asset('assets/image/food.png'),

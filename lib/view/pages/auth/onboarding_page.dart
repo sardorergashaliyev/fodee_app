@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/view/pages/auth/sign_in_page.dart';
 import 'package:foode/view/style/style.dart';
 

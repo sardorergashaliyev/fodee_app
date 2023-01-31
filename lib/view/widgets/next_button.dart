@@ -32,6 +32,6 @@ class NextButton extends StatelessWidget {
                 style: Style.textStyleRegular(textColor: Style.whiteColor)),
       ),
     );
-    ;
+    
   }
 }

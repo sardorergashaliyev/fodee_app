@@ -18,6 +18,7 @@ class AuthController extends ChangeNotifier {
   String imagePath = "";
   bool isLoading = false;
   int currentIndex = 0;
+  bool isVisibility = true;
   bool visibilityOfpasswor = false;
 
   hidePassword() {
@@ -194,6 +195,11 @@ class AuthController extends ChangeNotifier {
   }
   deleteImage() {
     imagePath = '';
+    notifyListeners();
+  }
+
+  onChange(){
+    isVisibility = !isVisibility;
     notifyListeners();
   }
 }

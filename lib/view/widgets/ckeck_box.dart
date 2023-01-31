@@ -11,8 +11,10 @@ class CkeckBox extends StatefulWidget {
 class _CkeckBoxState extends State<CkeckBox> {
   @override
 
+   // ignore: override_on_non_overriding_member
    bool value = false;
 
+  @override
   Widget build(BuildContext context) {
     return Row(
                 children: [
@@ -27,7 +29,7 @@ class _CkeckBoxState extends State<CkeckBox> {
                         ),
                       ),
                       activeColor: const Color(0xffFF1843),
-                      value: this.value,
+                      value: value,
                       onChanged: ((value) {
                         setState(() {
                           this.value = value!;
@@ -35,7 +37,7 @@ class _CkeckBoxState extends State<CkeckBox> {
                       })),
                   Text(
                     'Remember me',
-                    style:Style.textStyleRegular2(size: 14,textColor: Color(0xff2C3A4B))
+                    style:Style.textStyleRegular2(size: 14,textColor: const Color(0xff2C3A4B))
                   ),
                 ],
               );

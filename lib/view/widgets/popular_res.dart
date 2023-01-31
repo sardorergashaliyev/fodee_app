@@ -1,16 +1,15 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopularRes extends StatefulWidget {
+  const PopularRes({super.key});
+
 
   @override
   State<PopularRes> createState() => _PopularResState();
 }
 
 class _PopularResState extends State<PopularRes> {
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
