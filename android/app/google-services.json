@@ -22,7 +22,7 @@
           }
         },
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -90,7 +90,7 @@
           }
         },
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -126,7 +126,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-5fpspvr7elvbe4a1foi38bmvtpovkkeg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foode_with_firebase",
+            "certificate_hash": "b69fb5d1b0d00d7aac2ec11f70a4852675540666"
+          }
+        },
+        {
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -170,7 +178,7 @@
           }
         },
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -206,7 +214,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-2av8v9if1iv9roidevejhh999etb47s0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foods",
+            "certificate_hash": "fc7063e060dba89c840102560f4782fb8b028f84"
+          }
+        },
+        {
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -242,59 +258,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "195591511601-rf2livqmc7709gae328aenvsov1f7v3u.apps.googleusercontent.com",
+          "client_id": "195591511601-ndckvho57dhmjhlf6p5nh3hshn1ns485.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.foody",
-            "certificate_hash": "734607768a8657e6da369b00078908f851427ea4"
+            "certificate_hash": "ebaf06449a2ecb38812776019988ad903d7af357"
           }
         },
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAyseDXJJdjsZ4ivJM1cxibKVDQBKTSoF8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "195591511601-9a4mh9rlt60untj7k5eq7okq5ff31ieb.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.foodeApp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:195591511601:android:967122fb601be08bd4ff10",
-        "android_client_info": {
-          "package_name": "com.example.foodyApp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "195591511601-td3moimmmi039mdee18ueh988ap3ed28.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.foodyApp",
-            "certificate_hash": "aeecb7fea2e2ac615711bf05f30f18932a24a7ef"
-          }
-        },
-        {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -338,7 +310,59 @@
           }
         },
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-on1u400glkja8q49sbco2tjr5tlujanj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foody_app",
+            "certificate_hash": "aeecb7fea2e2ac615711bf05f30f18932a24a7ef"
+          }
+        },
+        {
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyseDXJJdjsZ4ivJM1cxibKVDQBKTSoF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "195591511601-9a4mh9rlt60untj7k5eq7okq5ff31ieb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.foodeApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195591511601:android:58a2207c4aca821dd4ff10",
+        "android_client_info": {
+          "package_name": "com.example.foody_apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195591511601-kc86nj30s9tg87ttt9unqk1c7esml084.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foody_apps",
+            "certificate_hash": "aeecb7fea2e2ac615711bf05f30f18932a24a7ef"
+          }
+        },
+        {
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -382,7 +406,51 @@
           }
         },
         {
-          "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyseDXJJdjsZ4ivJM1cxibKVDQBKTSoF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195591511601-1i29fie5if1qh8l9bs4ej4cfa26ornri.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "195591511601-9a4mh9rlt60untj7k5eq7okq5ff31ieb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.foodeApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195591511601:android:826e190f1fcce515d4ff10",
+        "android_client_info": {
+          "package_name": "com.example.jabikfoodyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195591511601-if4ahbu5ng5t4uubp80eiv2ka5le4sbl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jabikfoodyapp",
+            "certificate_hash": "130c446c88004e1254f3504778a573088b6ee815"
+          }
+        },
+        {
+          "client_id": "195591511601-v4vp63fohisrd67lip776bs0aknmunjd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

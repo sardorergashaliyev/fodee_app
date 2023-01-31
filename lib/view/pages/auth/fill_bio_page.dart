@@ -103,6 +103,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
+                    label: '',
                     onchange: (value) {
                       isFullNameEmpty = false;
                       setState(() {});
@@ -167,6 +168,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
+                    label: '',
                     onchange: (value) {
                       isNickNameEmpty = false;
                       setState(() {});
@@ -231,6 +233,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
+                    label: '',
                     onchange: (value) {
                       isPhoneNumberEmpty = false;
                       setState(() {});
@@ -295,6 +298,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
+                    label: '',
                     onchange: (value) {
                       isGenderEmpty = false;
                       setState(() {});
@@ -328,6 +332,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: TextFormField(
+                    readOnly: true,
                     onChanged: (value) {
                       // ignore: unused_local_variable
                       bool isDateOfBirthEmpty = false;
@@ -398,6 +403,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
+                    label: '',
                     onchange: (value) {
                       isPasswEmty = false;
                       setState(() {});
