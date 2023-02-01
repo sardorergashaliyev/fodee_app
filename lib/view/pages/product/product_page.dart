@@ -121,7 +121,14 @@ class _ProductListPageState extends State<ProductListPage> {
                               ],
                             ),
                             const Spacer(),
-                            Text(state.listOfProduct[index].price.toString())
+                            Text(state.listOfProduct[index].price.toString()),
+                            IconButton(
+                                onPressed: () {
+                                  event.changeLike(index);
+                                },
+                                icon: (state.listOfProduct[index].isLike)
+                                    ? Icon(Icons.favorite)
+                                    : Icon(Icons.favorite_border))
                           ],
                         ),
                       );

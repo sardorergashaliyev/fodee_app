@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/home_controller.dart';
+import 'package:foode/view/pages/product/product_page.dart';
 import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:foode/view/widgets/see_all_categ.dart';
@@ -220,7 +220,13 @@ class _HomePageState extends State<HomePage> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 24),
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (a) =>
+                                              const ProductListPage()),
+                                    );
+                                  },
                                   child: Text(
                                     'See all',
                                     style: Style.textStyleRegular2(
