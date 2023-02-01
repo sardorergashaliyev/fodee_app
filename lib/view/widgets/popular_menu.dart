@@ -18,10 +18,7 @@ class _PopularMenuState extends State<PopularMenu> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage('assets/image/background_image.png'),
-          ),
+          image: DecorationImage(image: AssetImage('assets/image/Group.png')),
         ),
         child: Column(
           children: [

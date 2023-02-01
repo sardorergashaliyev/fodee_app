@@ -9,7 +9,7 @@ class Style {
   static const primaryColor = Color(0xffF43F5E);
   static const whiteColor = Colors.white;
   static const blackColor = Colors.black;
-  static const greyColor = Color.fromARGB(255, 232, 232, 232);
+  static const greyColor = Color.fromARGB(255, 233, 235, 238);
   static const darkBgcolorOfApp = Color(0xff0D0D0D);
 
   // ---------- Gradient   ---------- //
@@ -24,31 +24,17 @@ class Style {
 
   static const primaryDisabledColor = Color.fromARGB(244, 235, 134, 164);
 
-  
-
-  static textStyleRegular(
-          {double size = 18,
-            Color textColor = blackColor,
-          
-         }) =>
+  static textStyleRegular({
+    double size = 18,
+    Color textColor = blackColor,
+  }) =>
       GoogleFonts.sourceSansPro(
-        fontWeight: FontWeight.w600,
-         color: textColor,
-         
-       
-        fontSize: size
-      );
+          fontWeight: FontWeight.w600, color: textColor, fontSize: size);
 
-
-        static textStyleRegular2(
-          {double size = 16,
-          Color textColor = blackColor,
-          
-         }) =>
+  static textStyleRegular2({
+    double size = 16,
+    Color textColor = blackColor,
+  }) =>
       GoogleFonts.sourceSansPro(
-        fontWeight: FontWeight.w600,
-        color: textColor,
-        fontSize: size
-      );
-  
+          fontWeight: FontWeight.w600, color: textColor, fontSize: size);
 }

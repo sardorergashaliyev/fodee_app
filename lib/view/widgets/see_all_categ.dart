@@ -32,59 +32,67 @@ class _CategoryPageState extends State<CategoryPage> {
       appBar: AppBar(
         title: const Text("Category"),
       ),
-      body: Column(
-        children: [
-          CustomTextFrom(
-            controller: search,
-            label: "Search",
-            onChange: (s) {
-              event.searchCategory(s);
-            },
-            hintext: '',
-          ),
-          Expanded(
-            child: GridView.builder(
-                shrinkWrap: true,
-                itemCount: state.listOfCategory.length,
-                // ignore: prefer_const_constructors
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 200,
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.all(8),
-                    width: 178.w,
-                    height: 184,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(24)),
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 50,
-                            offset: const Offset(0, 6),
-                            color: const Color(0xff5A6CEA).withOpacity(0.08))
-                      ],
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        state.listOfCategory[index].image == null
-                            ? const SizedBox.shrink()
-                            : CustomImageNetwork(
-                                image: state.listOfCategory[index].image ?? "",
-                                height: 150,
-                                width: 150,
-                              ),
-                        8.verticalSpace,
-                        Text(state.listOfCategory[index].name ?? "",
-                            style: Style.textStyleRegular2(
-                                size: 14, textColor: const Color(0xff6D7580))),
-                      ],
-                    ),
-                  );
-                }),
-          )
-        ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/image/Group.png')),
+        ),
+        child: Column(
+          children: [
+            CustomTextFrom(
+              controller: search,
+              label: "Search",
+              onChange: (s) {
+                event.searchCategory(s);
+              },
+              hintext: '',
+            ),
+            Expanded(
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.listOfCategory.length,
+                  // ignore: prefer_const_constructors
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 200,
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.all(8),
+                      width: 178.w,
+                      height: 184,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(24)),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 50,
+                              offset: const Offset(0, 6),
+                              color: const Color(0xff5A6CEA).withOpacity(0.08))
+                        ],
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          state.listOfCategory[index].image == null
+                              ? const SizedBox.shrink()
+                              : CustomImageNetwork(
+                                  image:
+                                      state.listOfCategory[index].image ?? "",
+                                  height: 150,
+                                  width: 150,
+                                ),
+                          8.verticalSpace,
+                          Text(state.listOfCategory[index].name ?? "",
+                              style: Style.textStyleRegular2(
+                                  size: 14,
+                                  textColor: const Color(0xff6D7580))),
+                        ],
+                      ),
+                    );
+                  }),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -43,7 +43,10 @@ class _AddProductPageState extends State<AddProductPage> {
     return Scaffold(
         body: SafeArea(
       child: SingleChildScrollView(
-        child: Padding(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/image/Group.png')),
+          ),
           padding: const EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +200,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     QuickAlert.show(
                         context: context,
                         type: QuickAlertType.success,
-                        autoCloseDuration: Duration(seconds: 3));
+                        autoCloseDuration: const Duration(seconds: 3));
                   },
                   child: context.watch<ProductController>().isSaveLoading
                       ? const CircularProgressIndicator(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/home_controller.dart';
-import 'package:foode/view/pages/product/product_page.dart';
+import 'package:foode/view/widgets/all_product_page.dart';
 import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:foode/view/widgets/see_all_categ.dart';
@@ -43,7 +43,11 @@ class _HomePageState extends State<HomePage> {
                 DecorationImage(image: AssetImage('assets/image/Group.png'))),
         child: Scaffold(
           body: SafeArea(
-            child: SizedBox(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/image/Group.png')),
+              ),
               height: MediaQuery.of(context).size.height,
               child: Column(
                 children: [
@@ -85,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                                   BorderRadius.all(Radius.circular(12))),
                           child: const Icon(
                             Icons.notifications_active,
-                            color: Color(0xffF43F5E),
+                            color: Style.primaryColor,
                           ),
                         ),
                       ),
@@ -109,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                     BorderRadius.all(Radius.circular(12))),
                             child: const Icon(
                               Icons.logout_outlined,
-                              color: Color(0xffF43F5E),
+                              color: Style.primaryColor,
                             ),
                           ),
                         ),
@@ -130,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                               keyboardType: TextInputType.name,
                               decoration: InputDecoration(
                                 filled: true,
-                                fillColor: const Color(0xffF4F6F9),
+                                fillColor: Style.greyColor,
                                 contentPadding: const EdgeInsets.only(
                                   left: 28,
                                 ),
@@ -139,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                                 hintStyle: Style.textStyleRegular2(size: 14),
                                 focusedBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xffF4F6F9),
+                                    color: Style.greyColor,
                                   ),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(100),
@@ -147,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 enabledBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xffF4F6F9),
+                                    color: Style.greyColor,
                                   ),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(100),

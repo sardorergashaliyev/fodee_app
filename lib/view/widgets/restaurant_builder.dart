@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foode/controllers/home_controller.dart';
+import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,7 @@ class RestaurantListview extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 5),
                 width: (MediaQuery.of(context).size.width - 48) / 3,
                 decoration: BoxDecoration(
-                    color: Colors.pinkAccent,
+                    color: Style.greyColor,
                     borderRadius: BorderRadius.circular(12)),
                 child: Column(
                   children: [

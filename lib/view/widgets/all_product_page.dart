@@ -37,7 +37,11 @@ class _ProductListPageState extends State<ProductListPage> {
       ),
       body: Column(
         children: [
-          Padding(
+          Container(
+            decoration: const BoxDecoration(
+              image:
+                  DecorationImage(image: AssetImage('assets/image/Group.png')),
+            ),
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
@@ -120,23 +124,31 @@ class _ProductListPageState extends State<ProductListPage> {
                                     image:
                                         'https://cdn11.bigcommerce.com/s-4f830/stencil/21634b10-fa2b-013a-00f1-62a1dd733893/e/4a0532a0-6207-013b-8ab2-261f9b1f5b00/icons/icon-no-image.svg',
                                   )
-                                : CustomImageNetwork(
-                                    image: context
-                                            .watch<HomeController>()
-                                            .listOfProduct[index]
-                                            .image ??
-                                        '',
-                                    height: 80,
-                                    width: 80,
+                                : Padding(
+                                    padding: const EdgeInsets.only(left: 8),
+                                    child: CustomImageNetwork(
+                                      image: context
+                                              .watch<HomeController>()
+                                              .listOfProduct[index]
+                                              .image ??
+                                          '',
+                                      height: 75,
+                                      width: 75,
+                                    ),
                                   ),
                             Padding(
                               padding: const EdgeInsets.only(left: 12),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  20.horizontalSpace,
-                                  Text(state.listOfProduct[index].name ?? ""),
-                                  20.horizontalSpace,
+                                  20.verticalSpace,
+                                  Text(
+                                    state.listOfProduct[index].name ?? "",
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  20.verticalSpace,
                                   SizedBox(
                                     width: 140,
                                     child: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/home_controller.dart';
+import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,7 @@ class MenuListView extends StatelessWidget {
           height: 100,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(16)),
-            color: Colors.pinkAccent,
+            color: Style.greyColor,
           ),
           child: Row(
             children: [
