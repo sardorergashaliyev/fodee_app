@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/home_controller.dart';
+import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:provider/provider.dart';
 
 class MenuListView extends StatelessWidget {
@@ -10,46 +12,66 @@ class MenuListView extends StatelessWidget {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: context.watch<HomeController>().listOfProduct.length,
+      itemCount: context.watch<HomeController>().listOfProduct.length >= 4
+          ? 4
+          : context.watch<HomeController>().listOfProduct.length,
       itemBuilder: (context, index) {
         return Container(
           margin: const EdgeInsets.all(16),
-          width: double.infinity,
-          height: 90,
-          color: Colors.pinkAccent,
+          width: MediaQuery.of(context).size.width - 48,
+          height: 100,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+            color: Colors.pinkAccent,
+          ),
           child: Row(
             children: [
               context.watch<HomeController>().listOfProduct[index].image == null
                   ? const SizedBox.shrink()
-                  : Image.network(
-                      context
+                  : CustomImageNetwork(
+                      image: context
                               .watch<HomeController>()
                               .listOfProduct[index]
                               .image ??
-                          "",
-                      height: 64,
-                      width: 64,
+                          '',
+                      height: 100,
+                      width: 80,
                     ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  12.horizontalSpace,
                   Text(context
                           .watch<HomeController>()
                           .listOfProduct[index]
                           .name ??
                       ""),
-                  Text(context
-                          .watch<HomeController>()
-                          .listOfProduct[index]
-                          .desc ??
-                      ""),
+                  SizedBox(
+                    width: 150,
+                    child: Text(
+                      context
+                              .watch<HomeController>()
+                              .listOfProduct[index]
+                              .desc ??
+                          "",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: true,
+                    ),
+                  ),
                 ],
               ),
               const Spacer(),
-              Text(context
-                  .watch<HomeController>()
-                  .listOfProduct[index]
-                  .price
-                  .toString(),)
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Text(
+                  context
+                      .watch<HomeController>()
+                      .listOfProduct[index]
+                      .price
+                      .toString(),
+                ),
+              )
             ],
           ),
         );

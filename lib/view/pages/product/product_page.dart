@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/home_controller.dart';
+import 'package:foode/view/style/style.dart';
+import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:provider/provider.dart';
 
@@ -52,7 +55,7 @@ class _ProductListPageState extends State<ProductListPage> {
                     onPressed: () {
                       event.setFilterChange();
                     },
-                    icon: Icon(Icons.menu))
+                    icon: const Icon(Icons.menu))
               ],
             ),
           ),
@@ -101,34 +104,61 @@ class _ProductListPageState extends State<ProductListPage> {
                         context.watch<HomeController>().listOfProduct.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.all(16),
-                        width: double.infinity,
+                        margin: const EdgeInsets.all(16),
+                        width: MediaQuery.of(context).size.width - 48,
                         height: 90,
-                        color: Colors.pinkAccent,
+                        decoration: BoxDecoration(
+                          color: Style.greyColor,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                         child: Row(
                           children: [
                             state.listOfProduct[index].image == null
-                                ? const SizedBox.shrink()
-                                : Image.network(
-                                    state.listOfProduct[index].image ?? "",
-                                    height: 64,
-                                    width: 64,
+                                ? const CustomImageNetwork(
+                                    height: 100,
+                                    width: 100,
+                                    image:
+                                        'https://cdn11.bigcommerce.com/s-4f830/stencil/21634b10-fa2b-013a-00f1-62a1dd733893/e/4a0532a0-6207-013b-8ab2-261f9b1f5b00/icons/icon-no-image.svg',
+                                  )
+                                : CustomImageNetwork(
+                                    image: context
+                                            .watch<HomeController>()
+                                            .listOfProduct[index]
+                                            .image ??
+                                        '',
+                                    height: 80,
+                                    width: 80,
                                   ),
-                            Column(
-                              children: [
-                                Text(state.listOfProduct[index].name ?? ""),
-                                Text(state.listOfProduct[index].desc ?? ""),
-                              ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 12),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  20.horizontalSpace,
+                                  Text(state.listOfProduct[index].name ?? ""),
+                                  20.horizontalSpace,
+                                  SizedBox(
+                                    width: 140,
+                                    child: Text(
+                                      state.listOfProduct[index].desc ?? "",
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  20.horizontalSpace
+                                ],
+                              ),
                             ),
-                            const Spacer(),
+                            // const Spacer(),
                             Text(state.listOfProduct[index].price.toString()),
+                            const Spacer(),
                             IconButton(
-                                onPressed: () {
-                                  event.changeLike(index);
-                                },
-                                icon: (state.listOfProduct[index].isLike)
-                                    ? Icon(Icons.favorite)
-                                    : Icon(Icons.favorite_border))
+                              onPressed: () {
+                                event.changeLike(index);
+                              },
+                              icon: (state.listOfProduct[index].isLike)
+                                  ? const Icon(Icons.favorite)
+                                  : const Icon(Icons.favorite_border),
+                            )
                           ],
                         ),
                       );

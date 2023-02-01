@@ -9,6 +9,8 @@ import 'package:foode/view/widgets/photo_edit.dart';
 import 'package:foode/view/widgets/photopick_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -182,57 +184,26 @@ class _AddProductPageState extends State<AddProductPage> {
                       ),
                     ),
               30.verticalSpace,
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                child: GestureDetector(
-                  onTap: () async {
-                    if (nameTextEditController.text.isEmpty) {
-                      isNameEmpty = true;
-                      setState(() {});
-                    } else if (descTextEditController.text.isEmpty) {
-                      isDescEmpty = true;
-                      setState(() {});
-                    } else if (priceTextEditController.text.isEmpty) {
-                      isPriceEmpty = true;
-                      setState(() {});
-                    }
-                    if (nameTextEditController.text.isNotEmpty &&
-                        descTextEditController.text.isNotEmpty &&
-                        priceTextEditController.text.isNotEmpty &&
-                        typeEditController.text.isEmpty) {
-                      context.read<ProductController>().createProduct(
-                            name: nameTextEditController.text,
-                            desc: descTextEditController.text,
-                            price: priceTextEditController.text,
-                          );
-                    }
+              ElevatedButton(
+                  onPressed: () {
+                    context.read<ProductController>().createProduct(
+                        name: nameTextEditController.text,
+                        desc: descTextEditController.text,
+                        price: priceTextEditController.text);
+                    nameTextEditController.clear();
+                    descTextEditController.clear();
+                    priceTextEditController.clear();
+                    context.read<ProductController>().imagePath = '';
+                    QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.success,
+                        autoCloseDuration: Duration(seconds: 3));
                   },
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 18, horizontal: 10),
-                    decoration: BoxDecoration(
-                      color: nameTextEditController.text.isEmpty ||
-                              descTextEditController.text.isEmpty ||
-                              priceTextEditController.text.isEmpty ||
-                              typeEditController.text.isEmpty
-                          ? const Color.fromARGB(244, 235, 134, 164)
-                          : const Color(0xffFF1843),
-                      borderRadius: const BorderRadius.all(Radius.circular(32)),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Save',
-                        style: GoogleFonts.sourceSansPro(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  child: context.watch<ProductController>().isSaveLoading
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : const Text("Save")),
               100.verticalSpace,
             ],
           ),

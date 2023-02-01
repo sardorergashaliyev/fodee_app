@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                             Text('Hello👋',
                                 style: Style.textStyleRegular(size: 19)),
                             Text(
-                                overflow: TextOverflow.visible,
+                                overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                                 softWrap: false,
                                 context
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right: 24),
                         child: GestureDetector(
                           onTap: () {
                             context.read<UserController>().logOut(() {
@@ -117,58 +117,62 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   32.verticalSpace,
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 24, right: 20),
-                        child: SizedBox(
-                          height: 45.h,
-                          width: 316.w,
-                          child: TextFormField(
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: const Color(0xffF4F6F9),
-                              contentPadding: const EdgeInsets.only(
-                                left: 28,
-                              ),
-                              suffixIcon: const Icon(Icons.search_rounded),
-                              hintText: 'Search',
-                              hintStyle: Style.textStyleRegular2(size: 14),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xffF4F6F9),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 24),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 24),
+                          child: SizedBox(
+                            height: 45.h,
+                            width: 300.w,
+                            child: TextFormField(
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: const Color(0xffF4F6F9),
+                                contentPadding: const EdgeInsets.only(
+                                  left: 28,
                                 ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(100),
+                                suffixIcon: const Icon(Icons.search_rounded),
+                                hintText: 'Search',
+                                hintStyle: Style.textStyleRegular2(size: 14),
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xffF4F6F9),
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(100),
+                                  ),
                                 ),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xffF4F6F9),
-                                ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(100),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xffF4F6F9),
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(100),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: 50,
-                        width: 50,
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(12)),
-                            color: const Color(0xffF43F5E).withOpacity(0.1)),
-                        child: const Icon(
-                          Icons.filter_list,
-                          color: Color(0xffF43F5E),
-                        ),
-                      )
-                    ],
+                        const Spacer(),
+                        Container(
+                          height: 50,
+                          width: 50,
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(12)),
+                              color: const Color(0xffF43F5E).withOpacity(0.1)),
+                          child: const Icon(
+                            Icons.filter_list,
+                            color: Color(0xffF43F5E),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   12.verticalSpace,
                   Expanded(
@@ -207,7 +211,9 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           SizedBox(
-                              height: 190.h, child: const RestaurantListview()),
+                            height: 190.h,
+                            child: const RestaurantListview(),
+                          ),
                           32.verticalSpace,
                           Row(
                             children: [
@@ -237,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           const MenuListView(),
-                          100.verticalSpace,
+                          120.verticalSpace,
                         ],
                       ),
                     ),

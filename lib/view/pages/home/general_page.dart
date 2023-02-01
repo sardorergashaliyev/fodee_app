@@ -44,6 +44,7 @@ class _GeneralPageState extends State<GeneralPage> {
             // showElevation: true,
             backgroundColor: Colors.white,
             containerHeight: 91,
+            
             itemCornerRadius: 12,
             curve: Curves.easeIn,
             items: [

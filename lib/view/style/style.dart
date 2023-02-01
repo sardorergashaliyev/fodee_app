@@ -9,6 +9,7 @@ class Style {
   static const primaryColor = Color(0xffF43F5E);
   static const whiteColor = Colors.white;
   static const blackColor = Colors.black;
+  static const greyColor = Color.fromARGB(255, 232, 232, 232);
   static const darkBgcolorOfApp = Color(0xff0D0D0D);
 
   // ---------- Gradient   ---------- //

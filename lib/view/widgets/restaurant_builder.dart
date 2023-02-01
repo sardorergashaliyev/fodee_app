@@ -9,7 +9,7 @@ class RestaurantListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24),
+      padding: const EdgeInsets.only(top: 24, left: 14),
       child: SizedBox(
         height: 180,
         child: ListView.builder(
