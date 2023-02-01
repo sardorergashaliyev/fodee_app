@@ -1,15 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:foode/model/product_model.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProductController extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final ImagePicker _image = ImagePicker();
   List listOfCategory = [];
   List listOfType = ["KG", "PC"];
   int selectCategoryIndex = 0;
   int selectTypeIndex = 0;
   bool isLoading = true;
   bool isSaveLoading = false;
+  String imagePath = '';
   QuerySnapshot? res;
 
   getCategory() async {
@@ -50,8 +54,37 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-  addCategory({required String name,required VoidCallback onSuccess}) async {
+  addCategory({required String name, required VoidCallback onSuccess}) async {
     await firestore.collection("category").add({"name": name});
     onSuccess();
+  }
+
+  getImageCamera() {
+    _image.pickImage(source: ImageSource.camera).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePath = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  getImageGallery() {
+    _image.pickImage(source: ImageSource.gallery).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePath = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  deleteImage() {
+    imagePath = '';
+    notifyListeners();
   }
 }

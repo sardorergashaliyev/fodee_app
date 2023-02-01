@@ -163,11 +163,12 @@ class _HomePageState extends State<HomePage> {
                       )
                     ],
                   ),
+                  12.verticalSpace,
                   Expanded(
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          32.verticalSpace,
+                          12.verticalSpace,
                           const SizedBox(height: 185, child: AkciyaListView()),
                           32.verticalSpace,
                           Row(
@@ -223,8 +224,8 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          32.verticalSpace,
-                          const MenuListView()
+                          const MenuListView(),
+                          100.verticalSpace,
                         ],
                       ),
                     ),

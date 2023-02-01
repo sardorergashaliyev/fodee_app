@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foode/controllers/auth_controller.dart';
 import 'package:foode/controllers/product_controller.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
+import 'package:foode/view/widgets/photo_edit.dart';
+import 'package:foode/view/widgets/photopick_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +44,30 @@ class _AddProductPageState extends State<AddProductPage> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              50.verticalSpace,
+              context.watch<ProductController>().imagePath.isEmpty
+                  ? const ProductImageDialog()
+                  : const SizedBox.shrink(),
+              context.watch<ProductController>().imagePath.isEmpty
+                  ? const SizedBox.shrink()
+                  : Stack(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 250.h,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(
+                                  File(context
+                                      .watch<ProductController>()
+                                      .imagePath),
+                                ),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                        const EditPhotoProduct()
+                      ],
+                    ),
+              30.verticalSpace,
               CustomTextFrom(
                 label: 'Name',
                 onchange: (value) {
@@ -131,9 +157,10 @@ class _AddProductPageState extends State<AddProductPage> {
                         priceTextEditController.text.isNotEmpty &&
                         typeEditController.text.isEmpty) {
                       context.read<ProductController>().createProduct(
-                          name: nameTextEditController.text,
-                          desc: descTextEditController.text,
-                          price: priceTextEditController.text);
+                            name: nameTextEditController.text,
+                            desc: descTextEditController.text,
+                            price: priceTextEditController.text,
+                          );
                     }
                   },
                   child: AnimatedContainer(
