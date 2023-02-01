@@ -55,7 +55,7 @@ class _ProductListPageState extends State<ProductListPage> {
                     onPressed: () {
                       event.setFilterChange();
                     },
-                    icon: const Icon(Icons.menu))
+                    icon: const Icon(Icons.settings))
               ],
             ),
           ),
@@ -78,7 +78,7 @@ class _ProductListPageState extends State<ProductListPage> {
                 ? Wrap(
                     children: [
                       for (int i = 0; i < state.listOfCategory.length; i++)
-                        InkWell(
+                        GestureDetector(
                           onTap: () {
                             event.changeIndex(i);
                           },
