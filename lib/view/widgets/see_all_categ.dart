@@ -30,9 +30,25 @@ class _CategoryPageState extends State<CategoryPage> {
     final event = context.read<HomeController>();
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 24),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: SizedBox(
+              height: 25,
+              width: 25,
+              child: Image.asset(
+                'assets/image/arrow_back.png',
+              ),
+            ),
+          ),
+        ),
         title: const Text("Category"),
       ),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24),
         decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage('assets/image/Group.png')),
         ),
