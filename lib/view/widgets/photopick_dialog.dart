@@ -7,7 +7,7 @@ class ProductImageDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         showDialog(
             context: context,
@@ -33,10 +33,12 @@ class ProductImageDialog extends StatelessWidget {
               );
             });
       },
-      child: Image.asset(
-        'assets/image/add-image.gif',
-        height: 150,
-        width: 150,
+      child: Center(
+        child: Image.asset(
+          'assets/image/image_add.gif',
+          height: 150,
+          width: 150,
+        ),
       ),
     );
   }

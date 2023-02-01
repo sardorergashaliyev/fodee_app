@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   delayed() {
-    Future.delayed(const Duration(seconds: 4)).then(
+    Future.delayed(const Duration(seconds: 2)).then(
       (value) => WidgetsBinding.instance.addPostFrameCallback(
         (_) async {
           Future.delayed(const Duration(seconds: 3), () async {

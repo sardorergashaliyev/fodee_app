@@ -23,7 +23,7 @@ class CustomTextFrom extends StatelessWidget {
     this.isObscure = false,
     this.obscuringCharacter,
     this.label,
-    this.icon,
+    this.icon, required Null Function(dynamic s) onChange,
   }) : super(key: key);
 
   @override

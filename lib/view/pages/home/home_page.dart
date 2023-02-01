@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/home_controller.dart';
 import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
+import 'package:foode/view/widgets/see_all_categ.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controllers/user_controller.dart';
@@ -125,26 +127,31 @@ class _HomePageState extends State<HomePage> {
                           child: TextFormField(
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
-                                filled: true,
-                                fillColor: const Color(0xffF4F6F9),
-                                contentPadding: const EdgeInsets.only(
-                                  left: 28,
+                              filled: true,
+                              fillColor: const Color(0xffF4F6F9),
+                              contentPadding: const EdgeInsets.only(
+                                left: 28,
+                              ),
+                              suffixIcon: const Icon(Icons.search_rounded),
+                              hintText: 'Search',
+                              hintStyle: Style.textStyleRegular2(size: 14),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xffF4F6F9),
                                 ),
-                                suffixIcon: const Icon(Icons.search_rounded),
-                                hintText: 'Search',
-                                hintStyle: Style.textStyleRegular2(size: 14),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xffF4F6F9),
-                                    ),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(100))),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xffF4F6F9),
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(100)))),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(100),
+                                ),
+                              ),
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xffF4F6F9),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(100),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -184,10 +191,12 @@ class _HomePageState extends State<HomePage> {
                                 padding: const EdgeInsets.only(right: 24),
                                 child: GestureDetector(
                                   onTap: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: ((context) =>
-                                    //             PopularRestaurantPage())));
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: ((context) =>
+                                            const CategoryPage()),
+                                      ),
+                                    );
                                   },
                                   child: Text('See all',
                                       style: Style.textStyleRegular(
@@ -211,15 +220,12 @@ class _HomePageState extends State<HomePage> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 24),
                                 child: GestureDetector(
-                                  onTap: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: ((context) =>
-                                    //             PopMenuPage())));
-                                  },
-                                  child: Text('See all',
-                                      style: Style.textStyleRegular2(
-                                          textColor: Style.primaryColor)),
+                                  onTap: () {},
+                                  child: Text(
+                                    'See all',
+                                    style: Style.textStyleRegular2(
+                                        textColor: Style.primaryColor),
+                                  ),
                                 ),
                               ),
                             ],

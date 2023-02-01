@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:foode/model/product_model.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -40,15 +43,22 @@ class ProductController extends ChangeNotifier {
       {required String name,
       required String desc,
       required String price}) async {
+    final storageRef = FirebaseStorage.instance
+        .ref()
+        .child("avatars/${DateTime.now().toString()}");
+    await storageRef.putFile(File(imagePath));
+
+    String url = await storageRef.getDownloadURL();
     isSaveLoading = true;
     notifyListeners();
     await firestore.collection("products").add(ProductModel(
             name: name,
             desc: desc,
-            image: "",
+            image: url,
             price: double.tryParse(price) ?? 0,
             category: res?.docs[selectCategoryIndex].id,
-            type: listOfType[selectTypeIndex])
+            type: listOfType[selectTypeIndex],
+            isLike: false)
         .toJson());
     isSaveLoading = false;
     notifyListeners();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foode/controllers/home_controller.dart';
+import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:provider/provider.dart';
 
 class AkciyaListView extends StatelessWidget {
@@ -28,15 +29,15 @@ class AkciyaListView extends StatelessWidget {
                             .product
                             .image !=
                         null
-                    ? Image.network(
-                        context
+                    ? CustomImageNetwork(
+                        image: context
                                 .watch<HomeController>()
                                 .listOfBanners[index]
                                 .product
                                 .image ??
-                            "",
+                            '',
                         height: 150,
-                        width: 166,
+                        width: 150,
                       )
                     : const SizedBox.shrink(),
                 Column(

@@ -53,7 +53,8 @@ class _FillBioPageState extends State<FillBioPage> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.18, vertical: 8.18),
                         decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(9.82)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(9.82)),
                             color: Color.fromARGB(255, 234, 175, 194)),
                         child: const Icon(
                           Icons.arrow_back_ios,
@@ -111,6 +112,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     controller: fullname,
                     keyboardType: TextInputType.emailAddress,
                     hintext: 'Full Name',
+                    onChange: (s) {},
                   ),
                 ),
                 isFullNameEmpty
@@ -118,10 +120,11 @@ class _FillBioPageState extends State<FillBioPage> {
                         padding:
                             const EdgeInsets.only(left: 24, top: 8, right: 24),
                         child: Container(
-                          padding:
-                              const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                          padding: const EdgeInsets.only(
+                              top: 6, bottom: 6, left: 36),
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
                               color: Color(0xffEBEEF2)),
                           child: Row(
                             children: [
@@ -176,6 +179,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     controller: nickname,
                     keyboardType: TextInputType.name,
                     hintext: 'Nick Name',
+                    onChange: (s) {},
                   ),
                 ),
                 isNickNameEmpty
@@ -183,10 +187,11 @@ class _FillBioPageState extends State<FillBioPage> {
                         padding:
                             const EdgeInsets.only(left: 24, top: 8, right: 24),
                         child: Container(
-                          padding:
-                              const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                          padding: const EdgeInsets.only(
+                              top: 6, bottom: 6, left: 36),
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
                               color: Color(0xffEBEEF2)),
                           child: Row(
                             children: [
@@ -241,6 +246,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     controller: phonenumber,
                     keyboardType: TextInputType.phone,
                     hintext: 'Phone Number',
+                    onChange: (s) {},
                   ),
                 ),
                 isPhoneNumberEmpty
@@ -248,10 +254,11 @@ class _FillBioPageState extends State<FillBioPage> {
                         padding:
                             const EdgeInsets.only(left: 24, top: 8, right: 24),
                         child: Container(
-                          padding:
-                              const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                          padding: const EdgeInsets.only(
+                              top: 6, bottom: 6, left: 36),
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
                               color: Color(0xffEBEEF2)),
                           child: Row(
                             children: [
@@ -306,6 +313,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     controller: genderController,
                     keyboardType: TextInputType.emailAddress,
                     hintext: 'Gender',
+                    onChange: (s) {},
                   ),
                 ),
                 Padding(
@@ -421,6 +429,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     obscuringCharacter: '*',
                     keyboardType: TextInputType.emailAddress,
                     hintext: 'Password',
+                    onChange: (s) {},
                   ),
                 ),
                 isAddressEmpty
@@ -428,10 +437,11 @@ class _FillBioPageState extends State<FillBioPage> {
                         padding:
                             const EdgeInsets.only(left: 24, top: 8, right: 24),
                         child: Container(
-                          padding:
-                              const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                          padding: const EdgeInsets.only(
+                              top: 6, bottom: 6, left: 36),
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
                               color: Color(0xffEBEEF2)),
                           child: Row(
                             children: [
@@ -457,7 +467,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                  child: InkWell(
+                  child: GestureDetector(
                     onTap: () async {
                       if (fullname.text.isEmpty) {
                         isFullNameEmpty = true;
@@ -503,7 +513,8 @@ class _FillBioPageState extends State<FillBioPage> {
                                 passwor.text.isEmpty
                             ? const Color.fromARGB(244, 235, 134, 164)
                             : const Color(0xffFF1843),
-                        borderRadius: const BorderRadius.all(Radius.circular(32)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(32)),
                       ),
                       child: Center(
                         child: Text(

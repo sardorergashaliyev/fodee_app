@@ -75,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       controller: phone,
                       keyboardType: TextInputType.phone,
-                      hintext: 'Phone Number',
+                      hintext: 'Phone Number', onChange: (s) {  },
                     ),
                   ),
                   8.verticalSpace,

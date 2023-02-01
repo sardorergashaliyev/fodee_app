@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/product_controller.dart';
+import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:foode/view/widgets/photo_edit.dart';
 import 'package:foode/view/widgets/photopick_dialog.dart';
@@ -22,10 +23,10 @@ class _AddProductPageState extends State<AddProductPage> {
   final TextEditingController priceTextEditController = TextEditingController();
   final TextEditingController typeEditController = TextEditingController();
 
-  bool isNameEmpty = true;
-  bool isDescEmpty = true;
-  bool isPriceEmpty = true;
-  bool isTypeEmpty = true;
+  bool isNameEmpty = false;
+  bool isDescEmpty = false;
+  bool isPriceEmpty = false;
+  bool isTypeEmpty = false;
 
   @override
   void initState() {
@@ -43,6 +44,7 @@ class _AddProductPageState extends State<AddProductPage> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               context.watch<ProductController>().imagePath.isEmpty
                   ? const ProductImageDialog()
@@ -77,7 +79,17 @@ class _AddProductPageState extends State<AddProductPage> {
                 controller: nameTextEditController,
                 keyboardType: TextInputType.emailAddress,
                 hintext: '',
+                onChange: (s) {},
               ),
+              !isNameEmpty
+                  ? const SizedBox.shrink()
+                  : const Padding(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Text(
+                        'This field is required!',
+                        style: TextStyle(color: Style.primaryColor),
+                      ),
+                    ),
               50.verticalSpace,
               CustomTextFrom(
                 label: 'Description',
@@ -88,15 +100,38 @@ class _AddProductPageState extends State<AddProductPage> {
                 controller: descTextEditController,
                 keyboardType: TextInputType.emailAddress,
                 hintext: '',
+                onChange: (s) {},
               ),
+              !isDescEmpty
+                  ? const SizedBox.shrink()
+                  : const Padding(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Text(
+                        'This field is required!',
+                        style: TextStyle(color: Style.primaryColor),
+                      ),
+                    ),
               50.verticalSpace,
               CustomTextFrom(
-                onchange: (value) {},
+                onchange: (value) {
+                  isPriceEmpty = false;
+                  setState(() {});
+                },
                 controller: priceTextEditController,
                 label: "Price",
                 keyboardType: TextInputType.number,
                 hintext: '',
+                onChange: (s) {},
               ),
+              !isPriceEmpty
+                  ? const SizedBox.shrink()
+                  : const Padding(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Text(
+                        'This field is required!',
+                        style: TextStyle(color: Style.primaryColor),
+                      ),
+                    ),
               50.verticalSpace,
               DropdownButtonFormField(
                 dropdownColor: const Color.fromARGB(255, 230, 226, 226),
@@ -135,12 +170,22 @@ class _AddProductPageState extends State<AddProductPage> {
                 controller: typeEditController,
                 keyboardType: TextInputType.emailAddress,
                 hintext: '',
+                onChange: (s) {},
               ),
+              !isTypeEmpty
+                  ? const SizedBox.shrink()
+                  : const Padding(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Text(
+                        'This field is required!',
+                        style: TextStyle(color: Style.primaryColor),
+                      ),
+                    ),
               30.verticalSpace,
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                child: InkWell(
+                child: GestureDetector(
                   onTap: () async {
                     if (nameTextEditController.text.isEmpty) {
                       isNameEmpty = true;

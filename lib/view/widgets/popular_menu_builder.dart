@@ -13,7 +13,7 @@ class MenuListView extends StatelessWidget {
       itemCount: context.watch<HomeController>().listOfProduct.length,
       itemBuilder: (context, index) {
         return Container(
-          margin: EdgeInsets.all(16),
+          margin: const EdgeInsets.all(16),
           width: double.infinity,
           height: 90,
           color: Colors.pinkAccent,
@@ -44,7 +44,7 @@ class MenuListView extends StatelessWidget {
                       ""),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Text(context
                   .watch<HomeController>()
                   .listOfProduct[index]

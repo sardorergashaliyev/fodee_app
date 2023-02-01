@@ -21,17 +21,21 @@ class _EditPhotoProductState extends State<EditPhotoProduct> {
           onTap: () {
             showCupertinoDialog(
                 context: context,
-                builder: ((context) => CupertinoAlertDialog(
+                builder: ((context) => AlertDialog(
                       title: const Text('Choose'),
                       actions: [
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<ProductController>().getImageCamera();
+                              context
+                                  .read<ProductController>()
+                                  .getImageCamera();
                             }),
                             child: const Text("Take photo")),
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<ProductController>().getImageGallery();
+                              context
+                                  .read<ProductController>()
+                                  .getImageGallery();
                             }),
                             child: const Text("From Gallery")),
                         CupertinoButton(
