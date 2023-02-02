@@ -5,8 +5,6 @@ import 'package:foode/controllers/chat_controller.dart';
 import 'package:foode/model/user_model.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:foode/view/widgets/on_unfocused.dart';
-import 'package:foode_app/model/user_model.dart';
-import 'package:foode_app/view/component/custom_text_from.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -59,18 +57,18 @@ class _MessagePageState extends State<MessagePage> {
         body: state.isLoading
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 reverse: true,
                 itemCount: state.messages.length,
                 itemBuilder: (context, index) {
                   return FocusedMenuHolder(
                     blurSize: 10,
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     onPressed: () {},
                     menuItems: state.messages[index].ownerId == state.userId
                         ? [
                             FocusedMenuItem(
-                                title: Text("Edit"),
+                                title: const Text("Edit"),
                                 onPressed: () {
                                   message.text = state.messages[index].title;
                                   FocusScope.of(context).autofocus(messageNode);
@@ -101,7 +99,7 @@ class _MessagePageState extends State<MessagePage> {
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 12),
+                        margin: const EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
                           color: state.messages[index].ownerId == state.userId
                               ? Colors.pinkAccent
@@ -109,7 +107,7 @@ class _MessagePageState extends State<MessagePage> {
                           borderRadius: BorderRadius.circular(24),
                         ),
                         padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                            const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,

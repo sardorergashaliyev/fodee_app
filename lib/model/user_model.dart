@@ -1,3 +1,4 @@
+
 import 'package:foode/model/address_model.dart';
 
 class UserModel {

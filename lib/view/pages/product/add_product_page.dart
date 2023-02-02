@@ -7,7 +7,6 @@ import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:foode/view/widgets/photo_edit.dart';
 import 'package:foode/view/widgets/photopick_dialog.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';

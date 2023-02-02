@@ -27,7 +27,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   void dispose() {
     phone.dispose();
-
     super.dispose();
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/app_controller.dart';
 import 'package:foode/controllers/auth_controller.dart';
+import 'package:foode/controllers/chat_controller.dart';
 import 'package:foode/controllers/home_controller.dart';
 import 'package:foode/controllers/product_controller.dart';
 import 'package:foode/controllers/user_controller.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UserController()),
         ChangeNotifierProvider(create: (context) => ProductController()),
         ChangeNotifierProvider(create: (context) => HomeController()),
-        ChangeNotifierProvider(create: (context) => AppController())
+        ChangeNotifierProvider(create: (context) => AppController()),
+        ChangeNotifierProvider(create: (context) => ChatController())
       ],
       child: ScreenUtilInit(
           designSize: const Size(428, 926),

@@ -2,6 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/auth_controller.dart';
+import 'package:foode/view/pages/chats/chats_page.dart';
 import 'package:foode/view/style/style.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class _GeneralPageState extends State<GeneralPage> {
     const HomePage(),
     const Placeholder(),
     const AddProductPage(),
-    const Placeholder(),
+    const ChatsPage(),
     const Placeholder(),
   ];
 
