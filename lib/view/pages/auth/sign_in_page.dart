@@ -87,7 +87,7 @@ class _SignInPageState extends State<SignInPage> {
                       },
                       controller: phone,
                       keyboardType: TextInputType.phone,
-                      hintext: 'Phone Number', onChange: (s) {  },
+                      hintext: 'Phone Number',
                     ),
                   ),
                   8.verticalSpace,

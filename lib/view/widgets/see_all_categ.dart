@@ -60,7 +60,7 @@ class _CategoryPageState extends State<CategoryPage> {
               onChange: (s) {
                 event.searchCategory(s);
               },
-              hintext: '',
+              hintext: '', onchange: (value) {  },
             ),
             Expanded(
               child: GridView.builder(

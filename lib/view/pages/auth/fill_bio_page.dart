@@ -426,7 +426,7 @@ class _FillBioPageState extends State<FillBioPage> {
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     controller: passwor,
-                    obscuringCharacter: '*',
+                    
                     keyboardType: TextInputType.emailAddress,
                     hintext: 'Password',
                     onChange: (s) {},

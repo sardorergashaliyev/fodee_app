@@ -16,7 +16,10 @@ class RestaurantListview extends StatelessWidget {
         child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: context.watch<HomeController>().listOfCategory.length,
+            itemCount:
+                context.watch<HomeController>().listOfCategory.length >= 4
+                    ? 4
+                    : context.watch<HomeController>().listOfCategory.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5),

@@ -18,7 +18,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map? data,bool? isLike) {
     return ProductModel(
-      name: data?["name"],
+      name: data?["name"], 
       desc: data?["desc"],
       image: data?["image"],
       price: data?["price"],

@@ -69,6 +69,7 @@ class _ProductListPageState extends State<ProductListPage> {
                       // event.searchCategory(s);
                     },
                     hintext: '',
+                    onchange: (value) {}, obscuringCharacter: '',
                   ),
                 ),
                 IconButton(
@@ -78,6 +79,7 @@ class _ProductListPageState extends State<ProductListPage> {
                     icon: const Icon(Icons.settings))
               ],
             ),
+            12.verticalSpace,
             state.setFilter || (state.selectIndex == -1)
                 ? const SizedBox.shrink()
                 : Container(
@@ -133,9 +135,9 @@ class _ProductListPageState extends State<ProductListPage> {
                           child: Row(
                             children: [
                               state.listOfProduct[index].image == null
-                                  ? const CustomImageNetwork(
-                                      height: 100,
-                                      width: 100,
+                                  ? CustomImageNetwork(
+                                      height: 100.h,
+                                      width: 100.w,
                                       image:
                                           'https://cdn11.bigcommerce.com/s-4f830/stencil/21634b10-fa2b-013a-00f1-62a1dd733893/e/4a0532a0-6207-013b-8ab2-261f9b1f5b00/icons/icon-no-image.svg',
                                     )
@@ -147,8 +149,8 @@ class _ProductListPageState extends State<ProductListPage> {
                                                 .listOfProduct[index]
                                                 .image ??
                                             '',
-                                        height: 75,
-                                        width: 75,
+                                        height: 75.h,
+                                        width: 75.w,
                                       ),
                                     ),
                               Padding(
@@ -157,15 +159,20 @@ class _ProductListPageState extends State<ProductListPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     20.verticalSpace,
-                                    Text(
-                                      state.listOfProduct[index].name ?? "",
-                                      style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w700),
+                                    SizedBox(
+                                      width: 140.w,
+                                      child: Text(
+                                        state.listOfProduct[index].name ?? "",
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w700),
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
                                     ),
                                     20.verticalSpace,
                                     SizedBox(
-                                      width: 140,
+                                      width: 140.w,
                                       child: Text(
                                         state.listOfProduct[index].desc ?? "",
                                         overflow: TextOverflow.ellipsis,

@@ -54,6 +54,8 @@ dependencies:
   google_sign_in: ^5.4.4
   flutter_login_facebook: ^1.6.2
   quickalert: ^1.0.1
+  focused_menu: ^1.0.5
+
 
 dev_dependencies:
   flutter_test:
