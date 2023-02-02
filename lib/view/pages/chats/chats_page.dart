@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/chat_controller.dart';
+import 'package:foode/view/style/style.dart';
+import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +34,7 @@ class _ChatsPageState extends State<ChatsPage> {
     final state = context.watch<ChatController>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chats"),
+        title: const Text("Chats"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -40,19 +43,28 @@ class _ChatsPageState extends State<ChatsPage> {
             Row(
               children: [
                 Expanded(
-                    child: CustomTextFrom(
-                  controller: searchUser,
-                  label: "Users",
-                  hintext: '',
-                  onchange: (value) {},
-                  obscuringCharacter: '',
-                  suffixicon: null,
+                    child: SizedBox(
+                  height: 45.h,
+                  child: CustomTextFrom(
+                    colorBorder: Color.fromARGB(255, 223, 224, 226),
+                    radius: 100,
+                    controller: searchUser,
+                    label: "Users",
+                    hintext: '',
+                    onchange: (value) {},
+                    obscuringCharacter: '',
+                    suffixicon: null,
+                  ),
                 )),
                 IconButton(
-                    onPressed: () {
-                      event.changeAddUser();
-                    },
-                    icon: Icon(Icons.add))
+                  color: Style.primaryColor,
+                  onPressed: () {
+                    event.changeAddUser();
+                  },
+                  icon: state.addUser
+                      ? const Icon(Icons.remove)
+                      : const Icon(Icons.add),
+                )
               ],
             ),
             state.addUser
@@ -72,18 +84,22 @@ class _ChatsPageState extends State<ChatsPage> {
                               });
                             },
                             child: Container(
-                              margin: EdgeInsets.all(24),
+                              padding: const EdgeInsets.all(12),
+                              margin: const EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                  color: Style.greyColor,
+                                  borderRadius: BorderRadius.circular(16)),
                               child: Row(
                                 children: [
                                   state.users[index].avatar == null
                                       ? const SizedBox.shrink()
-                                      : ClipOval(
-                                          child: Image.network(
-                                            state.users[index].avatar ?? "",
-                                            height: 62,
-                                            width: 62,
-                                          ),
+                                      : CustomImageNetwork(
+                                          image:
+                                              state.users[index].avatar ?? "",
+                                          height: 62,
+                                          width: 62,
                                         ),
+                                  12.horizontalSpace,
                                   Text(state.users[index].name ?? "")
                                 ],
                               ),
@@ -108,28 +124,49 @@ class _ChatsPageState extends State<ChatsPage> {
                                           )));
                             },
                             child: Container(
-                              color: Colors.pinkAccent,
-                              margin: EdgeInsets.all(24),
+                              padding: const EdgeInsets.all(12),
+                              margin: const EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                  color: Style.greyColor,
+                                  borderRadius: BorderRadius.circular(16)),
                               child: Row(
                                 children: [
                                   state.chats[index].resender.avatar == null
                                       ? const SizedBox.shrink()
-                                      : ClipOval(
-                                          child: Image.network(
-                                            state.chats[index].resender
-                                                    .avatar ??
-                                                "",
-                                            height: 62,
-                                            width: 62,
-                                          ),
+                                      : CustomImageNetwork(
+                                          image: state.chats[index].resender
+                                                  .avatar ??
+                                              "",
+                                          height: 62,
+                                          width: 62,
                                         ),
-                                  const Spacer(),
+                                  12.horizontalSpace,
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(state.chats[index].resender.name ??
-                                          ""),
-                                      Text(state.chats[index].userStatus
-                                          .toString()),
+                                      SizedBox(
+                                        width: 200,
+                                        child: Text(
+                                          state.chats[index].resender.name ??
+                                              "",
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                        ),
+                                      ),
+                                      Text(
+                                        state.chats[index].userStatus
+                                            ? 'Online'
+                                            : 'Offline'.toString(),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color:
+                                              Color.fromARGB(255, 75, 75, 75),
+                                        ),
+                                      ),
                                     ],
                                   )
                                 ],

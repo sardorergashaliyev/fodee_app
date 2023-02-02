@@ -8,7 +8,11 @@ class CustomTextFrom extends StatelessWidget {
   final TextInputType keyboardType;
   final Widget? suffixIcon;
   final bool isObscure;
+  final double radius;
   final FocusNode? node;
+  final Color? colorBorder;
+  final Color? colorFill;
+
   final ValueChanged<String>? onChange;
 
   const CustomTextFrom({
@@ -22,7 +26,11 @@ class CustomTextFrom extends StatelessWidget {
     this.node,
     required String hintext,
     onchange,
-    IconButton? suffixicon, String? obscuringCharacter,
+    IconButton? suffixicon,
+    String? obscuringCharacter,
+    this.radius = 0,
+    this.colorBorder = const Color(0x0ff00000),
+    this.colorFill = const Color(0xffFFFFFF),
   }) : super(key: key);
 
   @override
@@ -36,9 +44,27 @@ class CustomTextFrom extends StatelessWidget {
       onChanged: onChange,
       decoration: InputDecoration(
           labelText: label,
-          border: const OutlineInputBorder(),
-          enabledBorder: const OutlineInputBorder(),
-          focusedBorder: const OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: colorBorder ?? const Color(0x00000000)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(radius),
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: colorBorder ?? const Color(0x00000000)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(radius),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: colorBorder ?? const Color(0x00000000)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(radius),
+            ),
+          ),
           suffixIcon: suffixIcon ??
               (isObscure
                   ? IconButton(

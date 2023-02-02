@@ -3,6 +3,7 @@ import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:foode/controllers/chat_controller.dart';
 import 'package:foode/model/user_model.dart';
+import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:foode/view/widgets/on_unfocused.dart';
 import 'package:intl/intl.dart';
@@ -38,16 +39,31 @@ class _MessagePageState extends State<MessagePage> {
     return OnUnFocusTap(
       child: Scaffold(
         appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 24),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: SizedBox(
+                height: 25,
+                width: 25,
+                child: Image.asset(
+                  'assets/image/arrow_back.png',
+                ),
+              ),
+            ),
+          ),
           title: Row(
             children: [
               widget.user.avatar == null
                   ? const SizedBox.shrink()
-                  : ClipOval(
-                      child: Image.network(
-                        widget.user.avatar ?? "",
-                        width: 62,
-                        height: 62,
-                        fit: BoxFit.cover,
+                  : Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: CustomImageNetwork(
+                        image: widget.user.avatar ?? "",
+                        width: 45,
+                        height: 45,
                       ),
                     ),
               Text(widget.user.name ?? ""),
@@ -106,8 +122,8 @@ class _MessagePageState extends State<MessagePage> {
                               : Colors.grey,
                           borderRadius: BorderRadius.circular(24),
                         ),
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 20),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -146,6 +162,8 @@ class _MessagePageState extends State<MessagePage> {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           color: Colors.white,
           child: CustomTextFrom(
+            colorFill: Color.fromARGB(255, 178, 179, 181),
+            radius: 24,
             node: messageNode,
             controller: message,
             label: "",
@@ -161,8 +179,12 @@ class _MessagePageState extends State<MessagePage> {
                 message.clear();
                 FocusScope.of(context).unfocus();
               },
-              icon: const Icon(Icons.send),
-            ), hintext: '', onChange: (s) {  }, onchange: (value) {  },
+              icon: Icon(Icons.send,
+                  color: message.text.isNotEmpty ? Colors.blue : Colors.black),
+            ),
+            hintext: '',
+            onChange: (s) {},
+            onchange: (value) {},
           ),
         ),
       ),
