@@ -24,6 +24,7 @@ class MessagePage extends StatefulWidget {
 class _MessagePageState extends State<MessagePage> {
   final TextEditingController message = TextEditingController();
   final FocusNode messageNode = FocusNode();
+  bool isEmpty = true;
 
   @override
   void initState() {
@@ -67,7 +68,10 @@ class _MessagePageState extends State<MessagePage> {
                         height: 45,
                       ),
                     ),
-              Text(widget.user.name ?? ""),
+              SizedBox(
+                width: 200,
+                child: Text(widget.user.name ?? ""),
+              ),
             ],
           ),
         ),
@@ -168,7 +172,17 @@ class _MessagePageState extends State<MessagePage> {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           color: Colors.white,
           child: CustomTextFrom(
-            
+            hintext: '',
+            onChange: (s) {
+              isEmpty = false;
+              message.text.isEmpty ? isEmpty = true : isEmpty = false;
+              if (message.text == ' ' ||
+                  message.text == '  ' ||
+                  message.text == '.') {
+                isEmpty = true;
+              }
+              setState(() {});
+            },
             colorFill: const Color.fromARGB(255, 223, 224, 226),
             radius: 24,
             node: messageNode,
@@ -176,22 +190,23 @@ class _MessagePageState extends State<MessagePage> {
             label: "",
             suffixIcon: IconButton(
               onPressed: () {
-                state.editTime != null
-                    ? event.editMessage(
-                        chatDocId: widget.docId,
-                        messDocId: state.editMessId,
-                        newMessage: message.text,
-                        time: state.editTime ?? DateTime.now())
-                    : event.sendMessage(message.text, widget.docId);
-                message.clear();
-                FocusScope.of(context).unfocus();
+                if (isEmpty == true) {
+                } else {
+                  state.editTime != null
+                      ? event.editMessage(
+                          chatDocId: widget.docId,
+                          messDocId: state.editMessId,
+                          newMessage: message.text,
+                          time: state.editTime ?? DateTime.now())
+                      : event.sendMessage(message.text, widget.docId);
+                  message.clear();
+                  isEmpty = true;
+                  FocusScope.of(context).unfocus();
+                }
               },
               icon: Icon(Icons.send,
-                  color: message.text.isNotEmpty ? Colors.blue : Colors.black),
+                  color: !isEmpty ? Colors.blue : Colors.black),
             ),
-            hintext: '',
-            onChange: (s) {},
-            onchange: (value) {},
           ),
         ),
       ),

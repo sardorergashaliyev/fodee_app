@@ -75,15 +75,18 @@ class _AddProductPageState extends State<AddProductPage> {
                     ),
               30.verticalSpace,
               CustomTextFrom(
-                label: 'Name',
                 onchange: (value) {
-                  isNameEmpty = false;
+                  isPriceEmpty = false;
                   setState(() {});
                 },
+                colorFill: Style.greyColor,
+                colorBorder: Style.greyColor,
+                radius: 50,
                 controller: nameTextEditController,
-                keyboardType: TextInputType.emailAddress,
+                label: "Name",
                 hintext: '',
-                onChange: (s) {},
+                obscuringCharacter: '',
+                suffixicon: null,
               ),
               !isNameEmpty
                   ? const SizedBox.shrink()
@@ -96,15 +99,18 @@ class _AddProductPageState extends State<AddProductPage> {
                     ),
               50.verticalSpace,
               CustomTextFrom(
-                label: 'Description',
                 onchange: (value) {
-                  isDescEmpty = false;
+                  isPriceEmpty = false;
                   setState(() {});
                 },
+                colorFill: Style.greyColor,
+                colorBorder: Style.greyColor,
+                radius: 50,
                 controller: descTextEditController,
-                keyboardType: TextInputType.emailAddress,
+                label: "Description",
                 hintext: '',
-                onChange: (s) {},
+                obscuringCharacter: '',
+                suffixicon: null,
               ),
               !isDescEmpty
                   ? const SizedBox.shrink()
@@ -121,11 +127,14 @@ class _AddProductPageState extends State<AddProductPage> {
                   isPriceEmpty = false;
                   setState(() {});
                 },
+                colorFill: Style.greyColor,
+                colorBorder: Style.greyColor,
+                radius: 50,
                 controller: priceTextEditController,
                 label: "Price",
-                keyboardType: TextInputType.number,
                 hintext: '',
-                onChange: (s) {},
+                obscuringCharacter: '',
+                suffixicon: null,
               ),
               !isPriceEmpty
                   ? const SizedBox.shrink()
@@ -149,7 +158,9 @@ class _AddProductPageState extends State<AddProductPage> {
                     .toList(),
                 onChanged: (s) {},
                 decoration: const InputDecoration(
-                  labelText: "Category",
+                  filled: true,
+                  fillColor: Style.greyColor,
+                  labelText: "",
                   border: OutlineInputBorder(
                       borderSide:
                           BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
@@ -166,15 +177,18 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
               50.verticalSpace,
               CustomTextFrom(
-                label: 'Type',
                 onchange: (value) {
-                  isTypeEmpty = false;
+                  isPriceEmpty = false;
                   setState(() {});
                 },
+                colorFill: Style.greyColor,
+                colorBorder: Style.greyColor,
+                radius: 100,
                 controller: typeEditController,
-                keyboardType: TextInputType.emailAddress,
+                label: "Type",
                 hintext: '',
-                onChange: (s) {},
+                obscuringCharacter: '',
+                suffixicon: null,
               ),
               !isTypeEmpty
                   ? const SizedBox.shrink()
@@ -186,26 +200,28 @@ class _AddProductPageState extends State<AddProductPage> {
                       ),
                     ),
               30.verticalSpace,
-              ElevatedButton(
-                  onPressed: () {
-                    context.read<ProductController>().createProduct(
-                        name: nameTextEditController.text,
-                        desc: descTextEditController.text,
-                        price: priceTextEditController.text);
-                    nameTextEditController.clear();
-                    descTextEditController.clear();
-                    priceTextEditController.clear();
-                    context.read<ProductController>().imagePath = '';
-                    QuickAlert.show(
-                        context: context,
-                        type: QuickAlertType.success,
-                        autoCloseDuration: const Duration(seconds: 3));
-                  },
-                  child: context.watch<ProductController>().isSaveLoading
-                      ? const CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                      : const Text("Save")),
+              Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      context.read<ProductController>().createProduct(
+                          name: nameTextEditController.text,
+                          desc: descTextEditController.text,
+                          price: priceTextEditController.text);
+                      nameTextEditController.clear();
+                      descTextEditController.clear();
+                      priceTextEditController.clear();
+                      context.read<ProductController>().imagePath = '';
+                      QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.success,
+                          autoCloseDuration: const Duration(seconds: 3));
+                    },
+                    child: context.watch<ProductController>().isSaveLoading
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : const Text("Save")),
+              ),
               100.verticalSpace,
             ],
           ),
