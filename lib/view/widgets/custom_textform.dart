@@ -43,6 +43,8 @@ class CustomTextFrom extends StatelessWidget {
           isObscure ? (context.watch<AppController>().isVisibility) : false,
       onChanged: onChange,
       decoration: InputDecoration(
+          filled: true,
+          fillColor: colorFill,
           labelText: label,
           border: OutlineInputBorder(
             borderSide:

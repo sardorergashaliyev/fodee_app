@@ -11,14 +11,15 @@ class AkciyaListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: context.watch<HomeController>().listOfBanners.length,
         itemBuilder: (context, index) {
           return Container(
+            height: 150.h,
             margin: const EdgeInsets.all(16),
+            padding: const EdgeInsets.only(left: 10),
             width: MediaQuery.of(context).size.width - 48,
             decoration: BoxDecoration(
                 gradient: Style.linearGradient,
@@ -38,8 +39,8 @@ class AkciyaListView extends StatelessWidget {
                                 .product
                                 .image ??
                             '',
-                        height: 150,
-                        width: 150,
+                        height: 150.h,
+                        width: 150.w,
                       )
                     : const SizedBox.shrink(),
                 Column(
@@ -83,7 +84,7 @@ class AkciyaListView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Container(
                       width: 120.w,
                       height: 37.h,

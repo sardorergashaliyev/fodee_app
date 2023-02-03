@@ -62,14 +62,22 @@ class _ProductListPageState extends State<ProductListPage> {
             Row(
               children: [
                 Expanded(
-                  child: CustomTextFrom(
-                    controller: search,
-                    label: "Search",
-                    onChange: (s) {
-                      // event.searchCategory(s);
-                    },
-                    hintext: '',
-                    onchange: (value) {}, obscuringCharacter: '',
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12),
+                    child: SizedBox(
+                      height: 45.h,
+                      child: CustomTextFrom(
+                        colorFill: Style.greyColor,
+                        colorBorder: Style.greyColor,
+                        radius: 100,
+                        controller: search,
+                        label: "Search",
+                        hintext: '',
+                        onchange: (value) {},
+                        obscuringCharacter: '',
+                        suffixicon: null,
+                      ),
+                    ),
                   ),
                 ),
                 IconButton(

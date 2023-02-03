@@ -3,6 +3,7 @@ import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:foode/controllers/chat_controller.dart';
 import 'package:foode/model/user_model.dart';
+import 'package:foode/view/style/style.dart';
 import 'package:foode/view/widgets/cached_network_image.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
 import 'package:foode/view/widgets/on_unfocused.dart';
@@ -118,8 +119,8 @@ class _MessagePageState extends State<MessagePage> {
                         margin: const EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
                           color: state.messages[index].ownerId == state.userId
-                              ? Colors.pinkAccent
-                              : Colors.grey,
+                              ? Style.primaryColor
+                              : Style.greyColor,
                           borderRadius: BorderRadius.circular(24),
                         ),
                         padding: const EdgeInsets.symmetric(
@@ -128,13 +129,18 @@ class _MessagePageState extends State<MessagePage> {
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              state.messages[index].title,
-                              style: TextStyle(
-                                  color: state.messages[index].ownerId ==
-                                          state.userId
-                                      ? Colors.white
-                                      : Colors.black),
+                            SizedBox(
+                              width: state.messages[index].title.length >= 50
+                                  ? 50
+                                  : null,
+                              child: Text(
+                                state.messages[index].title,
+                                style: TextStyle(
+                                    color: state.messages[index].ownerId ==
+                                            state.userId
+                                        ? Colors.white
+                                        : Colors.black),
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 8, left: 4),
@@ -162,7 +168,8 @@ class _MessagePageState extends State<MessagePage> {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           color: Colors.white,
           child: CustomTextFrom(
-            colorFill: Color.fromARGB(255, 178, 179, 181),
+            
+            colorFill: const Color.fromARGB(255, 223, 224, 226),
             radius: 24,
             node: messageNode,
             controller: message,
