@@ -48,7 +48,7 @@ class _CategoryPageState extends State<CategoryPage> {
         title: const Text("Category"),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage('assets/image/Group.png')),
         ),

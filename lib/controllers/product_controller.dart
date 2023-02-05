@@ -24,6 +24,7 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
     res = await firestore.collection("category").get();
     listOfCategory.clear();
+    // ignore: avoid_function_literals_in_foreach_calls
     res?.docs.forEach((element) {
       listOfCategory.add(element["name"]);
     });

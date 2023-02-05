@@ -8,8 +8,6 @@ class NextButton extends StatelessWidget {
   final String image;
   const NextButton({super.key, required this.image});
 
-  
-
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(

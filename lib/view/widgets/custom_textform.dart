@@ -7,6 +7,7 @@ class CustomTextFrom extends StatelessWidget {
   final String label;
   final TextInputType keyboardType;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final bool isObscure;
   final double radius;
   final FocusNode? node;
@@ -31,6 +32,7 @@ class CustomTextFrom extends StatelessWidget {
     this.radius = 0,
     this.colorBorder = const Color(0x0ff00000),
     this.colorFill = const Color(0xffFFFFFF),
+    this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -43,6 +45,7 @@ class CustomTextFrom extends StatelessWidget {
           isObscure ? (context.watch<AppController>().isVisibility) : false,
       onChanged: onChange,
       decoration: InputDecoration(
+          prefixIcon: prefixIcon,
           filled: true,
           fillColor: colorFill,
           labelText: label,

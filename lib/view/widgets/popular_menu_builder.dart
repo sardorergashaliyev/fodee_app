@@ -71,6 +71,10 @@ class MenuListView extends StatelessWidget {
                       .listOfProduct[index]
                       .price
                       .toString(),
+                  style: const TextStyle(
+                      color: Style.blackColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
                 ),
               )
             ],

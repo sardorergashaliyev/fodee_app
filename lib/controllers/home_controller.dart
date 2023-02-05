@@ -120,6 +120,7 @@ class HomeController extends ChangeNotifier {
   getProduct({bool isLimit = true}) async {
     _isProductLoading = true;
     notifyListeners();
+    // ignore: prefer_typing_uninitialized_variables
     var res;
     if (isLimit) {
       res = await firestore.collection("products").limit(5).get();

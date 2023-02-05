@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foode/controllers/auth_controller.dart';
 import 'package:foode/view/pages/auth/upload_photo.dart';
 import 'package:foode/view/widgets/custom_textform.dart';
-import 'package:foode/view/widgets/onunfocused_tap.dart';
+import 'package:foode/view/widgets/on_unfocused.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
