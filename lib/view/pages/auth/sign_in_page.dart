@@ -80,14 +80,16 @@ class _SignInPageState extends State<SignInPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: CustomTextFrom(
-                      label: '',
-                      onchange: (value) {
-                        isPhoneEmpty = false;
-                        setState(() {});
-                      },
+                      colorFill: Style.greyColor,
+                      colorBorder: Style.greyColor,
+                      radius: 100,
+                      onchange: (value) {},
+                      obscuringCharacter: '',
+                      suffixicon: null,
                       controller: phone,
                       keyboardType: TextInputType.phone,
                       hintext: 'Phone Number',
+                      label: '',
                     ),
                   ),
                   8.verticalSpace,
@@ -120,11 +122,10 @@ class _SignInPageState extends State<SignInPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                     child: CustomTextFrom(
-                      label: '',
-                      onchange: (value) {
-                        isPasswordEmpty = false;
-                        setState(() {});
-                      },
+                      colorFill: Style.greyColor,
+                      colorBorder: Style.greyColor,
+                      radius: 100,
+                      onchange: (value) {},
                       suffixicon: IconButton(
                           onPressed: () {
                             visibilityOfpasswor = !visibilityOfpasswor;
@@ -136,7 +137,9 @@ class _SignInPageState extends State<SignInPage> {
                       controller: password,
                       obscuringCharacter: '*',
                       keyboardType: TextInputType.multiline,
-                      hintext: 'Password', onChange: (s) {  },
+                      hintext: 'Password',
+                      onChange: (s) {},
+                      label: '',
                     ),
                   ),
                   8.verticalSpace,
