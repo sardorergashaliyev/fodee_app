@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foode/controllers/chat_controller.dart';
 import 'package:foode/model/user_model.dart';
 import 'package:foode/view/style/style.dart';
@@ -12,8 +13,10 @@ import 'package:provider/provider.dart';
 class MessagePage extends StatefulWidget {
   final String docId;
   final UserModel user;
+  final int index;
 
-  const MessagePage({Key? key, required this.docId, required this.user})
+  const MessagePage(
+      {Key? key, required this.docId, required this.user, required this.index})
       : super(key: key);
 
   @override
@@ -23,6 +26,7 @@ class MessagePage extends StatefulWidget {
 class _MessagePageState extends State<MessagePage> {
   final TextEditingController message = TextEditingController();
   final FocusNode messageNode = FocusNode();
+  bool isEmpty = true;
 
   @override
   void initState() {
@@ -39,19 +43,52 @@ class _MessagePageState extends State<MessagePage> {
     return OnUnFocusTap(
       child: Scaffold(
         appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 5),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: SizedBox(
+                height: 25.h,
+                width: 25.w,
+                child: Image.asset(
+                  'assets/image/arrow_back.png',
+                ),
+              ),
+            ),
+          ),
           title: Row(
             children: [
-              widget.user.avatar == null
-                  ? const SizedBox.shrink()
-                  : ClipOval(
-                      child: Image.network(
-                        widget.user.avatar ?? "",
-                        width: 62,
-                        height: 62,
-                        fit: BoxFit.cover,
+              CustomImageNetwork(
+                image: widget.user.avatar ?? "",
+                width: 45,
+                height: 45,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.user.name ?? "",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text(
+                      state.chats[widget.index].userStatus
+                          ? 'Online'
+                          : 'Offline'.toString(),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: state.chats[widget.index].userStatus
+                            ? Style.greenColor
+                            : Style.primaryColor,
                       ),
                     ),
-              Text(widget.user.name ?? ""),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -166,6 +203,17 @@ class _MessagePageState extends State<MessagePage> {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           color: Colors.white,
           child: CustomTextFrom(
+            onChange: (s) {
+              isEmpty = false;
+              message.text.isEmpty ? isEmpty = true : isEmpty = false;
+              if (message.text == ' ' ||
+                  message.text == '  ' ||
+                  message.text == '.') {
+                isEmpty = true;
+                setState(() {});
+              }
+              setState(() {});
+            },
             prefixIcon: Container(
               color: Colors.transparent,
               child: Row(
@@ -184,26 +232,34 @@ class _MessagePageState extends State<MessagePage> {
                       event.getVideoGallery(widget.docId);
                     },
                     child: Container(
-                        margin: EdgeInsets.only(left: 5),
+                        margin: const EdgeInsets.only(left: 5),
                         child: const Icon(Icons.video_library)),
                   ),
                 ],
               ),
             ),
-            suffixIcon: IconButton(
-              onPressed: () {
-                state.editTime != null
-                    ? event.editMessage(
-                        chatDocId: widget.docId,
-                        messDocId: state.editMessId,
-                        newMessage: message.text,
-                        time: state.editTime ?? DateTime.now())
-                    : event.sendMessage(
-                        title: message.text, docId: widget.docId, type: 'text');
-                message.clear();
-                FocusScope.of(context).unfocus();
+            suffixIcon: GestureDetector(
+              onTap: () {
+                if (isEmpty == false) {
+                  state.editTime != null
+                      ? event.editMessage(
+                          chatDocId: widget.docId,
+                          messDocId: state.editMessId,
+                          newMessage: message.text,
+                          time: state.editTime ?? DateTime.now())
+                      : event.sendMessage(
+                          title: message.text,
+                          docId: widget.docId,
+                          type: 'text');
+                  message.clear();
+                  isEmpty = true;
+                  FocusScope.of(context).unfocus();
+                } else {}
               },
-              icon: const Icon(Icons.send),
+              child: Icon(
+                Icons.send,
+                color: !isEmpty ? Colors.blue : Style.blackColor,
+              ),
             ),
             colorFill: Style.greyColor,
             colorBorder: Style.greyColor,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foode/controllers/auth_controller.dart';
 import 'package:foode/view/pages/auth/upload_photo.dart';
@@ -364,8 +365,8 @@ class _FillBioPageState extends State<FillBioPage> {
                         }),
                         icon: SvgPicture.asset(
                           'assets/svg/calendar.svg',
-                          height: 24,
-                          width: 24,
+                          height: 24.h,
+                          width: 24.w,
                           color: Colors.grey,
                         ),
                       ),

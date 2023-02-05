@@ -47,9 +47,9 @@ class _SignInPageState extends State<SignInPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   24.verticalSpace,
-                  const FullogoImage(
-                    height: 192,
-                    width: 192,
+                  FullogoImage(
+                    height: 192.h,
+                    width: 192.w,
                   ),
                   Text(
                     'Sign in to your account',
