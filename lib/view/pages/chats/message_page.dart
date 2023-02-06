@@ -70,22 +70,27 @@ class _MessagePageState extends State<MessagePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.user.name ?? "",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    Text(
-                      state.chats[widget.index].userStatus
-                          ? 'Online'
-                          : 'Offline'.toString(),
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: state.chats[widget.index].userStatus
-                            ? Style.greenColor
-                            : Style.primaryColor,
+                    SizedBox(
+                      width: 230.w,
+                      child: Text(
+                        widget.user.name ?? "",
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ),
+                    // Text(
+                    //   state.chats[widget.index].userStatus
+                    //       ? 'Online'
+                    //       : 'Offline'.toString(),
+                    //   style: TextStyle(
+                    //     fontSize: 14,
+                    //     fontWeight: FontWeight.w500,
+                    //     color: state.chats[widget.index].userStatus
+                    //         ? Style.greenColor
+                    //         : Style.primaryColor,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
