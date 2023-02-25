@@ -17,8 +17,7 @@ class _CustomVideoState extends State<CustomVideo> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-        "https://v.mover.uz/5K3UENY3_m.mp4")
+    _controller = VideoPlayerController.network(widget.videoUrl)
       ..initialize().then((_) {
         setState(() {});
       });
@@ -29,8 +28,8 @@ class _CustomVideoState extends State<CustomVideo> {
   Widget build(BuildContext context) {
     return _controller.value.isInitialized
         ? Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Stack(
+            padding: const EdgeInsets.all(12.0),
+            child: Stack(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
@@ -65,7 +64,7 @@ class _CustomVideoState extends State<CustomVideo> {
                 )
               ],
             ),
-        )
+          )
         : Container(
             height: 150,
             width: 150,
